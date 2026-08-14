@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLOTHING CHAOS</title>
+<meta name="description" content="CLOTHING CHAOS — Streetwear & fashion au Maroc.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}
+a{text-decoration:none;color:inherit}button,input{font:inherit}
+.top{background:#111;color:#fff;text-align:center;padding:9px;font-size:11px}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #eee}
+.nav{max-width:1200px;height:72px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:22px;letter-spacing:2px}
+.links{display:flex;gap:25px;font-size:13px}
+.cart-btn{border:0;background:none;font-size:20px;position:relative}
+.count{position:absolute;top:-8px;right:-9px;background:#111;color:#fff;border-radius:50%;font-size:9px;width:17px;height:17px;display:grid;place-items:center}
+.hero{background:#f2f2ef}
+.hero-in{max-width:1200px;min-height:520px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(55px,8vw,90px);line-height:.88;letter-spacing:-5px;margin:15px 0 25px}
+.label{font-size:10px;letter-spacing:3px;color:#777;text-transform:uppercase}
+.hero p{max-width:480px;color:#666;line-height:1.8;font-size:14px}
+.btn{display:inline-block;padding:14px 24px;margin-top:25px;background:#111;color:#fff;font-size:11px;text-transform:uppercase}
+.hero-img{height:410px;overflow:hidden;background:#ddd}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.section{max-width:1200px;margin:auto;padding:75px 20px}
+.title{font-size:38px;margin:8px 0 30px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cat{height:260px;position:relative;overflow:hidden}
+.cat img{width:100%;height:100%;object-fit:cover}
+.cat div{position:absolute;bottom:0;left:0;right:0;padding:20px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:24px;font-weight:bold}
+.tools{display:flex;gap:10px;margin-bottom:25px}
+.search{flex:1;padding:14px;border:1px solid #ddd;background:#fafafa;outline:0}
+.filter{padding:0 18px;background:#fff;border:1px solid #ddd}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.product{border:1px solid #e5e5e5;overflow:hidden;background:#fff}
+.pic{height:300px;background:#f3f3f3;position:relative}
+.pic img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:#111;color:#fff;padding:6px 8px;font-size:8px}
+.info{padding:15px}
+.brand{font-size:9px;color:#999;letter-spacing:1px}
+.name{font-size:18px;font-weight:bold;margin:5px 0}
+.desc{font-size:10px;color:#777;min-height:28px}
+.sizes{display:flex;gap:5px;margin:13px 0}
+.size{padding:7px 10px;border:1px solid #ddd;background:#fff;font-size:10px}
+.size.active{background:#111;color:#fff;border-color:#111}
+.bottom{display:flex;align-items:center;justify-content:space-between}
+.price{font-weight:bold;font-size:13px}
+.add{background:#111;color:#fff;border:0;padding:10px 13px;font-size:10px}
+.about{background:#f4f3ef;text-align:center}
+.about p{max-width:700px;margin:auto;color:#666;line-height:1.8;font-size:14px}
+footer{background:#111;color:#fff;padding:55px 20px 25px}
+.foot{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:30px}
+.foot p{color:#aaa;font-size:12px;margin-top:10px}
+.bottom-foot{max-width:1200px;margin:40px auto 0;padding-top:18px;border-top:1px solid #333;color:#777;font-size:10px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:none}
+.overlay.open{display:block}
+.cart{position:absolute;right:0;top:0;width:min(450px,100%);height:100%;background:#fff;padding:22px;display:flex;flex-direction:column}
+.cart-head{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding-bottom:18px}
+.close{border:0;background:none;font-size:25px}
+.items{flex:1;overflow:auto}
+.empty{text-align:center;color:#888;margin-top:70px}
+.item{display:flex;gap:10px;padding:15px 0;border-bottom:1px solid #eee}
+.item img{width:65px;height:78px;object-fit:cover}
+.item-info{flex:1}.item-name{font-weight:bold;font-size:13px}.meta{font-size:10px;color:#888;margin-top:5px}
+.qty{display:flex;align-items:center;gap:7px;margin-top:8px}
+.qty button{width:25px;height:25px;border:1px solid #ddd;background:#fff}
+.remove{border:0;background:none;color:#999;font-size:10px}
+.cart-foot{border-top:1px solid #eee;padding-top:18px}
+.total{display:flex;justify-content:space-between;font-weight:bold;margin-bottom:14px}
+.checkout{width:100%;padding:15px;background:#111;color:#fff;border:0;font-size:11px}
+.form{display:none;padding-top:12px}.form.open{display:block}
+.form h3{margin-bottom:10px}
+.field{width:100%;padding:12px;border:1px solid #ddd;margin-bottom:8px;font-size:12px}
+.send{width:100%;padding:14px;background:#25D366;color:#fff;border:0;font-weight:bold}
+.wa{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;font-size:24px;z-index:50}
+@media(max-width:850px){.links{display:none}.hero-in{grid-template-columns:1fr}.hero-img{height:320px}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:550px){.nav{height:62px}.logo{font-size:18px}.hero-in{padding:45px 16px}.hero h1{font-size:58px}.section{padding:55px 16px}.categories{grid-template-columns:1fr 1fr}.cat{height:180px}.cat:last-child{display:none}.products{gap:8px}.pic{height:220px}.info{padding:11px}.name{font-size:16px}.size{padding:6px 7px}.add{padding:8px}.tools{flex-direction:column}.filter{padding:12px}.foot{display:block}.foot p{margin-bottom:20px}}
+</style>
+</head>
+<body>
+
+<div class="top">✦ Livraison partout au Maroc · Paiement à la livraison</div>
+
+<header>
+<div class="nav">
+<a class="logo" href="#">CLOTHING CHAOS</a>
+<nav class="links"><a href="#shop">Shop</a><a href="#collections">Collections</a><a href="#about">À propos</a></nav>
+<button class="cart-btn" onclick="openCart()">🛒<span class="count" id="count">0</span></button>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-in">
+<div>
+<div class="label">CLOTHING CHAOS · STREETWEAR</div>
+<h1>WEAR<br>YOUR<br>CHAOS.</h1>
+<p>Des pièces modernes pour créer ton propre style. Livraison partout au Maroc et paiement à la livraison.</p>
+<a class="btn" href="#shop">Shop now</a>
+</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85" alt="Clothing Chaos"></div>
+</div>
+</section>
+
+<section class="section" id="collections">
+<div class="label">Explore</div><h2 class="title">Collections</h2>
+<div class="categories">
+<a class="cat" href="#shop" onclick="filterCat('Men');return false"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85"><div>Men</div></a>
+<a class="cat" href="#shop" onclick="filterCat('Women');return false"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85"><div>Women</div></a>
+<a class="cat" href="#shop" onclick="filterCat('Unisex');return false"><img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"><div>Unisex</div></a>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="label">Our collection</div><h2 class="title" id="shopTitle">New Arrivals</h2>
+<div class="tools">
+<input class="search" id="search" placeholder="Rechercher un vêtement..." oninput="searchProducts()">
+<button class="filter" onclick="showAll()">Tous les produits</button>
+</div>
+<div class="products" id="products"></div>
+</section>
+
+<section class="section about" id="about">
+<div class="label">CLOTHING CHAOS</div><h2 class="title">Style without rules.</h2>
+<p>Bienvenue chez CLOTHING CHAOS. Une sélection streetwear pensée pour ceux qui veulent un style différent. Commande simple par WhatsApp.</p>
+</section>
+
+<footer>
+<div class="foot">
+<div><b style="font-size:23px;letter-spacing:2px">CLOTHING CHAOS</b><p>Streetwear & fashion. Wear your chaos.</p></div>
+<div><b>CONTACT</b><p><a href="https://wa.me/212603701100" target="_blank">WhatsApp : 0603701100</a></p></div>
+</div>
+<div class="bottom-foot">© 2026 CLOTHING CHAOS</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="outside(event)">
+<div class="cart">
+<div class="cart-head"><h2>Your Bag</h2><button class="close" onclick="closeCart()">×</button></div>
+<div class="items" id="items"><div class="empty">Votre panier est vide.</div></div>
+<div class="cart-foot">
+<div class="total"><span>Total</span><span id="total">0 DH</span></div>
+<button class="checkout" onclick="showForm()">Continuer la commande</button>
+<div class="form" id="form">
+<h3>Informations client</h3>
+<input class="field" id="name" placeholder="Nom complet *">
+<input class="field" id="phone" placeholder="Téléphone *" type="tel">
+<input class="field" id="address" placeholder="Adresse complète *">
+<input class="field" id="city" placeholder="Ville *">
+<button class="send" onclick="sendOrder()">Commander via WhatsApp</button>
+</div>
+</div>
+</div>
+</div>
+
+<a class="wa" href="https://wa.me/212603701100" target="_blank">☎</a>
+
+<script>
+const products=[
+{id:1,cat:"Men",name:"Oversized T-Shirt",desc:"Minimal · Heavy Cotton",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85",price:149,sizes:["S","M","L","XL"],badge:"New"},
+{id:2,cat:"Women",name:"Essential Top",desc:"Clean · Everyday",img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85",price:129,sizes:["XS","S","M","L"],badge:"Popular"},
+{id:3,cat:"Unisex",name:"Graphic Hoodie",desc:"Oversized · Streetwear",img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85",price:249,sizes:["S","M","L","XL"],badge:"Bestseller"},
+{id:4,cat:"Men",name:"Cargo Pants",desc:"Relaxed · Utility",img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",price:229,sizes:["S","M","L","XL"],badge:"Trending"},
+{id:5,cat:"Women",name:"Oversized Jacket",desc:"Urban · Modern",img:"https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=800&q=85",price:299,sizes:["XS","S","M","L"],badge:"New"},
+{id:6,cat:"Unisex",name:"Basic Hoodie",desc:"Soft · Oversized",img:"https://images.unsplash.com/photo-1509942774463-acf339cf87d5?auto=format&fit=crop&w=800&q=85",price:219,sizes:["S","M","L","XL"],badge:"Classic"}
+];
+
+let cart=[],sizes={},currentCat=null;
+
+function list(){
+let q=document.getElementById("search").value.toLowerCase().trim();
+return products.filter(p=>(!currentCat||p.cat===currentCat)&&(!q||(p.name+" "+p.desc).toLowerCase().includes(q)));
+}
+function render(arr=list()){
+let c=document.getElementById("products");c.innerHTML="";
+if(!arr.length){c.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#888;padding:50px">Aucun produit trouvé.</p>';return}
+arr.forEach(p=>{
+let s=sizes[p.id]||p.sizes[0];
+c.innerHTML+=`<div class="product"><div class="pic">${p.badge?`<span class="badge">${p.badge}</span>`:""}<img src="${p.img}" alt="${p.name}"></div><div class="info"><div class="brand">CHAOS</div><div class="name">${p.name}</div><div class="desc">${p.desc}</div><div class="sizes">${p.sizes.map(x=>`<button class="size ${x===s?"active":""}" onclick="selectSize(${p.id},'${x}')">${x}</button>`).join("")}</div><div class="bottom"><span class="price">${p.price} DH</span><button class="add" onclick="add(${p.id})">Ajouter</button></div></div></div>`;
+});
+}
+function selectSize(id,s){sizes[id]=s;render()}
+function filterCat(c){currentCat=c;document.getElementById("search").value="";document.getElementById("shopTitle").textContent=c;render();document.getElementById("shop").scrollIntoView({behavior:"smooth"})}
+function showAll(){currentCat=null;document.getElementById("search").value="";document.getElementById("shopTitle").textContent="New Arrivals";render(products)}
+function searchProducts(){render()}
+function add(id){let p=products.find(x=>x.id===id),s=sizes[id]||p.sizes[0],x=cart.find(i=>i.id===id&&i.size===s);x?x.qty++:cart.push({id,size:s,qty:1});update();openCart()}
+function update(){
+document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);
+let box=document.getElementById("items");
+if(!cart.length){box.innerHTML='<div class="empty">Votre panier est vide.</div>';document.getElementById("total").textContent="0 DH";return}
+let total=0;
+box.innerHTML=cart.map((x,i)=>{let p=products.find(y=>y.id===x.id);total+=p.price*x.qty;return `<div class="item"><img src="${p.img}"><div class="item-info"><div class="item-name">${p.name}</div><div class="meta">Taille : ${x.size}</div><div class="meta">${p.price} DH × ${x.qty}</div><div class="qty"><button onclick="qty(${i},-1)">−</button><span>${x.qty}</span><button onclick="qty(${i},1)">+</button></div></div><button class="remove" onclick="removeItem(${i})">Supprimer</button></div>`}).join("");
+document.getElementById("total").textContent=total+" DH";
+}
+function qty(i,n){cart[i].qty+=n;if(cart[i].qty<=0)cart.splice(i,1);update()}
+function removeItem(i){cart.splice(i,1);update()}
+function openCart(){document.getElementById("overlay").classList.add("open");document.body.style.overflow="hidden"}
+function closeCart(){document.getElementById("overlay").classList.remove("open");document.body.style.overflow=""}
+function outside(e){if(e.target.id==="overlay")closeCart()}
+function showForm(){if(!cart.length)return alert("Votre panier est vide.");document.getElementById("form").classList.add("open")}
+function sendOrder(){
+let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),a=document.getElementById("address").value.trim(),c=document.getElementById("city").value.trim();
+if(!n||!ph||!a||!c)return alert("Veuillez remplir toutes les informations.");
+let msg="👋 NOUVELLE COMMANDE\n\n📦 PRODUITS :\n";
+cart.forEach(x=>{let p=products.find(y=>y.id===x.id);msg+=`• ${p.name} — ${x.size} x ${x.qty}\n`});
+msg+=`\n👤 INFORMATIONS CLIENT :\nNom complet : ${n}\nTéléphone : ${ph}\nAdresse : ${a}\nVille : ${c}`;
+window.open("https://wa.me/212603701100?text="+encodeURIComponent(msg),"_blank");
+}
+render();update();
+</script>
+</body>
+</html>
