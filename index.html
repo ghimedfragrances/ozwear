@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="O2WEAR - Boutique de vêtements tendance">
+
   <title>O2WEAR — Fashion Store</title>
 
+
   <style>
+
     :root{
       --bg:#f7f7f5;
       --card:#fff;
@@ -16,15 +23,18 @@
       --green:#25D366;
     }
 
+
     *{
       box-sizing:border-box;
       margin:0;
       padding:0;
     }
 
+
     html{
       scroll-behavior:smooth;
     }
+
 
     body{
       font-family:Arial,Helvetica,sans-serif;
@@ -33,15 +43,20 @@
       line-height:1.5;
     }
 
+
     a{
       text-decoration:none;
       color:inherit;
     }
 
+
     button{
       font:inherit;
       cursor:pointer;
     }
+
+
+    /* TOP BAR */
 
     .topbar{
       background:#111;
@@ -52,6 +67,9 @@
       letter-spacing:.4px;
     }
 
+
+    /* HEADER */
+
     header{
       position:sticky;
       top:0;
@@ -60,6 +78,7 @@
       backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
     }
+
 
     nav{
       max-width:1200px;
@@ -72,15 +91,18 @@
       gap:20px;
     }
 
+
     .logo{
       font-size:26px;
       font-weight:900;
       letter-spacing:2px;
     }
 
+
     .logo span{
       font-weight:400;
     }
+
 
     .navlinks{
       display:flex;
@@ -88,14 +110,17 @@
       font-size:14px;
     }
 
+
     .navlinks a:hover{
       text-decoration:underline;
     }
+
 
     .nav-actions{
       display:flex;
       gap:10px;
     }
+
 
     .icon-btn{
       width:40px;
@@ -108,11 +133,34 @@
       font-size:18px;
     }
 
+
+    /* SEARCH */
+
+    .search-box{
+      display:none;
+      padding:0 22px 14px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+
+    .search-box input{
+      width:100%;
+      padding:13px 16px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      outline:none;
+    }
+
+
+    /* HERO */
+
     .hero{
       max-width:1200px;
       margin:22px auto 0;
       padding:0 22px;
     }
+
 
     .hero-box{
       min-height:500px;
@@ -121,17 +169,26 @@
       position:relative;
       display:flex;
       align-items:flex-end;
+
       background:
-        linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.12)),
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.67),
+          rgba(0,0,0,.12)
+        ),
+
         url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85")
+
         center/cover;
     }
+
 
     .hero-content{
       color:#fff;
       padding:52px;
       max-width:620px;
     }
+
 
     .eyebrow{
       font-size:12px;
@@ -140,11 +197,13 @@
       margin-bottom:12px;
     }
 
+
     h1{
       font-size:clamp(42px,7vw,78px);
       line-height:.95;
       margin-bottom:18px;
     }
+
 
     .hero-content p{
       font-size:17px;
@@ -152,6 +211,7 @@
       max-width:470px;
       margin-bottom:28px;
     }
+
 
     .btn{
       display:inline-flex;
@@ -167,20 +227,26 @@
       transition:.2s;
     }
 
+
     .btn:hover{
       transform:translateY(-2px);
     }
+
 
     .btn.dark{
       background:#111;
       color:#fff;
     }
 
+
+    /* SECTIONS */
+
     .section{
       max-width:1200px;
       margin:75px auto 0;
       padding:0 22px;
     }
+
 
     .section-head{
       display:flex;
@@ -189,29 +255,39 @@
       margin-bottom:24px;
     }
 
+
     .section h2{
       font-size:32px;
       letter-spacing:-1px;
     }
+
 
     .section-head p{
       color:var(--muted);
       font-size:14px;
     }
 
+
+    /* FILTER TITLES */
+
     .filter-title{
-      font-size:13px;
-      font-weight:700;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
       margin-bottom:10px;
     }
+
+
+    /* FILTERS */
 
     .filters{
       display:flex;
       gap:9px;
       overflow:auto;
       padding-bottom:5px;
-      margin-bottom:20px;
+      margin-bottom:22px;
     }
+
 
     .filter{
       white-space:nowrap;
@@ -220,7 +296,9 @@
       padding:10px 17px;
       border-radius:25px;
       font-size:13px;
+      transition:.2s;
     }
+
 
     .filter.active{
       background:#111;
@@ -228,17 +306,22 @@
       border-color:#111;
     }
 
+
     .filter:hover{
       background:#111;
       color:#fff;
       border-color:#111;
     }
 
+
+    /* PRODUCTS */
+
     .products{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
+
 
     .product{
       background:var(--card);
@@ -247,12 +330,14 @@
       overflow:hidden;
     }
 
+
     .product-img{
       height:330px;
       position:relative;
       background:#eee;
       overflow:hidden;
     }
+
 
     .product-img img{
       width:100%;
@@ -262,9 +347,11 @@
       transition:.45s;
     }
 
+
     .product:hover .product-img img{
       transform:scale(1.04);
     }
+
 
     .badge{
       position:absolute;
@@ -277,6 +364,7 @@
       font-weight:700;
       z-index:2;
     }
+
 
     .gender-badge{
       position:absolute;
@@ -291,14 +379,17 @@
       z-index:2;
     }
 
+
     .product-info{
       padding:15px;
     }
+
 
     .product-info h3{
       font-size:15px;
       margin-bottom:4px;
     }
+
 
     .category{
       font-size:12px;
@@ -306,16 +397,61 @@
       margin-bottom:10px;
     }
 
+
     .price{
       font-weight:800;
       font-size:16px;
     }
+
+
+    /* QUANTITY */
+
+    .quantity-box{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      margin-top:12px;
+      border:1px solid var(--line);
+      border-radius:9px;
+      padding:6px;
+      background:#fff;
+    }
+
+
+    .quantity-box button{
+      width:30px;
+      height:30px;
+      border:0;
+      background:#111;
+      color:#fff;
+      border-radius:7px;
+      font-size:18px;
+      line-height:1;
+    }
+
+
+    .quantity-box button:hover{
+      opacity:.8;
+    }
+
+
+    .quantity-box span{
+      min-width:25px;
+      text-align:center;
+      font-weight:700;
+      font-size:14px;
+    }
+
+
+    /* PRODUCT BUTTONS */
 
     .product-actions{
       display:flex;
       gap:8px;
       margin-top:13px;
     }
+
 
     .buy{
       flex:1;
@@ -328,6 +464,12 @@
       font-weight:700;
     }
 
+
+    .buy:hover{
+      opacity:.85;
+    }
+
+
     .details{
       width:42px;
       border:1px solid var(--line);
@@ -335,20 +477,32 @@
       border-radius:9px;
     }
 
+
+    /* BANNER */
+
     .banner{
       margin-top:75px;
       min-height:310px;
       border-radius:22px;
       overflow:hidden;
+
       background:
-        linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.1)),
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.72),
+          rgba(0,0,0,.1)
+        ),
+
         url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=85")
+
         center/cover;
+
       display:flex;
       align-items:center;
       padding:45px;
       color:#fff;
     }
+
 
     .banner h2{
       font-size:42px;
@@ -356,11 +510,15 @@
       margin-bottom:12px;
     }
 
+
     .banner p{
       color:#ddd;
       max-width:430px;
       margin-bottom:22px;
     }
+
+
+    /* FEATURES */
 
     .features{
       display:grid;
@@ -369,6 +527,7 @@
       margin-top:75px;
     }
 
+
     .feature{
       background:#fff;
       border:1px solid var(--line);
@@ -376,20 +535,26 @@
       border-radius:16px;
     }
 
+
     .feature .emoji{
       font-size:25px;
       margin-bottom:12px;
     }
+
 
     .feature h3{
       font-size:15px;
       margin-bottom:6px;
     }
 
+
     .feature p{
       font-size:13px;
       color:var(--muted);
     }
+
+
+    /* FOOTER */
 
     footer{
       background:#111;
@@ -397,6 +562,7 @@
       margin-top:80px;
       padding:45px 22px 25px;
     }
+
 
     .footer-inner{
       max-width:1200px;
@@ -406,9 +572,11 @@
       gap:40px;
     }
 
+
     footer .logo{
       margin-bottom:10px;
     }
+
 
     footer p{
       color:#aaa;
@@ -416,11 +584,13 @@
       max-width:350px;
     }
 
+
     .footer-links{
       display:flex;
       gap:25px;
       font-size:13px;
     }
+
 
     .copyright{
       max-width:1200px;
@@ -430,6 +600,9 @@
       color:#888;
       font-size:11px;
     }
+
+
+    /* WHATSAPP */
 
     .wa{
       position:fixed;
@@ -447,6 +620,9 @@
       z-index:100;
     }
 
+
+    /* MODAL */
+
     .modal{
       position:fixed;
       inset:0;
@@ -458,9 +634,11 @@
       z-index:200;
     }
 
+
     .modal.show{
       display:flex;
     }
+
 
     .modal-box{
       background:#fff;
@@ -470,6 +648,7 @@
       padding:25px;
       position:relative;
     }
+
 
     .close{
       position:absolute;
@@ -481,6 +660,7 @@
       z-index:2;
     }
 
+
     .modal-box img{
       width:100%;
       height:260px;
@@ -489,14 +669,17 @@
       margin:12px 0 17px;
     }
 
+
     .modal-box h2{
       font-size:25px;
     }
+
 
     .modal-price{
       font-weight:800;
       margin:7px 0 15px;
     }
+
 
     .modal-box p{
       color:#666;
@@ -504,20 +687,33 @@
       margin-bottom:18px;
     }
 
-    .search-box{
-      display:none;
-      padding:0 22px 14px;
-      max-width:1200px;
-      margin:auto;
+
+    .modal-quantity{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      margin:15px 0;
     }
 
-    .search-box input{
-      width:100%;
-      padding:13px 16px;
-      border:1px solid var(--line);
-      border-radius:12px;
-      outline:none;
+
+    .modal-quantity button{
+      width:35px;
+      height:35px;
+      border:0;
+      background:#111;
+      color:#fff;
+      border-radius:8px;
+      font-size:20px;
     }
+
+
+    .modal-quantity span{
+      min-width:30px;
+      text-align:center;
+      font-weight:800;
+    }
+
 
     .no-products{
       grid-column:1/-1;
@@ -526,20 +722,27 @@
       text-align:center;
     }
 
+
+    /* MOBILE */
+
     @media(max-width:900px){
 
       .products{
         grid-template-columns:repeat(2,1fr);
       }
 
+
       .navlinks{
         display:none;
       }
 
+
       .product-img{
         height:300px;
       }
+
     }
+
 
     @media(max-width:600px){
 
@@ -547,78 +750,102 @@
         height:64px;
       }
 
+
       .logo{
         font-size:22px;
       }
+
 
       .hero-box{
         min-height:470px;
       }
 
+
       .hero-content{
         padding:28px;
       }
+
 
       .hero-content p{
         font-size:15px;
       }
 
+
       .section{
         margin-top:55px;
       }
+
 
       .section h2{
         font-size:26px;
       }
 
+
       .products{
         gap:10px;
       }
+
 
       .product-img{
         height:245px;
       }
 
+
       .product-info{
         padding:11px;
       }
+
 
       .banner{
         padding:28px;
         min-height:330px;
       }
 
+
       .banner h2{
         font-size:34px;
       }
+
 
       .features{
         grid-template-columns:1fr;
         margin-top:55px;
       }
 
+
       .footer-inner{
         flex-direction:column;
       }
+
 
       .footer-links{
         flex-wrap:wrap;
       }
 
+
       .wa{
         right:15px;
         bottom:15px;
       }
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
+
+  <!-- TOP BAR -->
 
   <div class="topbar">
     LIVRAISON PARTOUT AU MAROC • O2WEAR
   </div>
 
+
+  <!-- HEADER -->
 
   <header>
 
@@ -628,11 +855,23 @@
         O2<span>WEAR</span>
       </a>
 
+
       <div class="navlinks">
-        <a href="#shop">SHOP</a>
-        <a href="#new">NOUVEAUTÉS</a>
-        <a href="#about">À PROPOS</a>
+
+        <a href="#shop">
+          SHOP
+        </a>
+
+        <a href="#new">
+          NOUVEAUTÉS
+        </a>
+
+        <a href="#about">
+          À PROPOS
+        </a>
+
       </div>
+
 
       <div class="nav-actions">
 
@@ -642,6 +881,7 @@
           aria-label="Recherche">
           ⌕
         </button>
+
 
         <a
           class="icon-btn"
@@ -655,7 +895,11 @@
     </nav>
 
 
-    <div class="search-box" id="searchBox">
+    <!-- SEARCH -->
+
+    <div
+      class="search-box"
+      id="searchBox">
 
       <input
         id="searchInput"
@@ -670,6 +914,7 @@
 
   <main>
 
+
     <!-- HERO -->
 
     <section class="hero">
@@ -682,17 +927,24 @@
             O2WEAR — NEW COLLECTION
           </div>
 
+
           <h1>
             WEAR YOUR<br>
             OWN STYLE.
           </h1>
 
+
           <p>
             Des pièces modernes, simples et tendance pensées pour ton quotidien.
           </p>
 
-          <a href="#shop" class="btn">
+
+          <a
+            href="#shop"
+            class="btn">
+
             Découvrir la collection →
+
           </a>
 
         </div>
@@ -702,9 +954,13 @@
     </section>
 
 
+
     <!-- SHOP -->
 
-    <section class="section" id="shop">
+    <section
+      class="section"
+      id="shop">
+
 
       <div class="section-head">
 
@@ -723,36 +979,50 @@
       </div>
 
 
-      <!-- GENRE -->
+
+      <!-- GENDER -->
 
       <div class="filter-title">
         COLLECTION
       </div>
 
-      <div class="filters" id="genderFilters">
+
+      <div
+        class="filters"
+        id="genderFilters">
+
 
         <button
           class="filter active"
           data-gender="all"
           onclick="setGender('all')">
+
           Tout
+
         </button>
+
 
         <button
           class="filter"
           data-gender="hommes"
           onclick="setGender('hommes')">
+
           Pour Hommes
+
         </button>
+
 
         <button
           class="filter"
           data-gender="femmes"
           onclick="setGender('femmes')">
+
           Pour Femmes
+
         </button>
 
       </div>
+
 
 
       <!-- CATEGORIES -->
@@ -761,57 +1031,83 @@
         CATÉGORIES
       </div>
 
-      <div class="filters" id="categoryFilters">
+
+      <div
+        class="filters"
+        id="categoryFilters">
+
 
         <button
           class="filter active"
           data-category="all"
           onclick="setCategory('all')">
+
           Toutes
+
         </button>
+
 
         <button
           class="filter"
           data-category="T-shirts"
           onclick="setCategory('T-shirts')">
+
           T-shirts
+
         </button>
+
 
         <button
           class="filter"
           data-category="Hoodies"
           onclick="setCategory('Hoodies')">
+
           Hoodies
+
         </button>
+
 
         <button
           class="filter"
           data-category="Pantalons"
           onclick="setCategory('Pantalons')">
+
           Pantalons
+
         </button>
+
 
         <button
           class="filter"
           data-category="Vestes"
           onclick="setCategory('Vestes')">
+
           Vestes
+
         </button>
 
       </div>
 
+
+
+      <!-- PRODUCTS -->
 
       <div
         class="products"
         id="productGrid">
       </div>
 
+
     </section>
+
 
 
     <!-- BANNER -->
 
-    <section class="section" id="new">
+    <section
+      class="section"
+      id="new">
+
 
       <div class="banner">
 
@@ -821,18 +1117,25 @@
             O2WEAR ESSENTIALS
           </div>
 
+
           <h2>
             Simple.<br>
             Clean.<br>
             O2WEAR.
           </h2>
 
+
           <p>
             Une sélection de vêtements faciles à porter et à associer.
           </p>
 
-          <a href="#shop" class="btn">
+
+          <a
+            href="#shop"
+            class="btn">
+
             Voir les produits
+
           </a>
 
         </div>
@@ -842,11 +1145,16 @@
     </section>
 
 
+
     <!-- FEATURES -->
 
-    <section class="section" id="about">
+    <section
+      class="section"
+      id="about">
+
 
       <div class="features">
+
 
         <div class="feature">
 
@@ -898,24 +1206,30 @@
 
         </div>
 
+
       </div>
 
     </section>
 
+
   </main>
+
 
 
   <!-- FOOTER -->
 
   <footer>
 
+
     <div class="footer-inner">
+
 
       <div>
 
         <div class="logo">
           O2<span>WEAR</span>
         </div>
+
 
         <p>
           Fashion brand moderne. Découvre nos pièces et commande directement via WhatsApp.
@@ -930,91 +1244,149 @@
           Shop
         </a>
 
+
         <a href="#new">
           Nouveautés
         </a>
+
 
         <a href="#about">
           À propos
         </a>
 
+
         <a
           href="https://wa.me/212603701100"
           target="_blank">
+
           WhatsApp
+
         </a>
 
       </div>
+
 
     </div>
 
 
     <div class="copyright">
+
       © 2026 O2WEAR. Tous droits réservés.
+
     </div>
+
 
   </footer>
 
 
-  <!-- WHATSAPP -->
+
+  <!-- WHATSAPP FLOATING BUTTON -->
 
   <a
     class="wa"
     href="https://wa.me/212603701100"
     target="_blank"
     aria-label="WhatsApp">
+
     ◉
+
   </a>
 
 
-  <!-- MODAL -->
+
+  <!-- PRODUCT MODAL -->
 
   <div
     class="modal"
     id="productModal"
     onclick="closeOutside(event)">
 
+
     <div class="modal-box">
+
 
       <button
         class="close"
         onclick="closeModal()">
+
         ×
+
       </button>
+
 
       <img
         id="modalImg"
         src=""
         alt="">
 
+
       <h2 id="modalName"></h2>
+
 
       <div
         class="modal-price"
         id="modalPrice">
       </div>
 
+
       <p id="modalDesc"></p>
+
+
+      <div class="modal-quantity">
+
+
+        <button
+          type="button"
+          onclick="changeModalQuantity(-1)">
+
+          −
+
+        </button>
+
+
+        <span id="modalQty">
+          1
+        </span>
+
+
+        <button
+          type="button"
+          onclick="changeModalQuantity(1)">
+
+          +
+
+        </button>
+
+
+      </div>
+
 
       <button
         class="btn dark"
         id="modalBuy"
         style="width:100%">
+
         Commander sur WhatsApp
+
       </button>
+
 
     </div>
 
   </div>
 
 
+
   <script>
+
 
     /* =========================
        PRODUCTS
     ========================= */
 
+
     const products = [
+
 
       {
         id:1,
@@ -1026,6 +1398,7 @@
         desc:"T-shirt oversized noir, coupe moderne et facile à porter."
       },
 
+
       {
         id:2,
         name:"Essential White T-Shirt",
@@ -1035,6 +1408,7 @@
         img:"https://images.unsplash.com/photo-1583743814966-8936f37f4c75?auto=format&fit=crop&w=800&q=85",
         desc:"Un essentiel blanc minimaliste pour tous les jours."
       },
+
 
       {
         id:3,
@@ -1046,6 +1420,7 @@
         desc:"Hoodie confortable au style clean, parfait pour un look casual."
       },
 
+
       {
         id:4,
         name:"Grey Oversized Hoodie",
@@ -1055,6 +1430,7 @@
         img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85",
         desc:"Hoodie gris oversized avec une silhouette moderne."
       },
+
 
       {
         id:5,
@@ -1066,6 +1442,7 @@
         desc:"Pantalon cargo confortable avec une coupe décontractée."
       },
 
+
       {
         id:6,
         name:"Classic Black Pants",
@@ -1075,6 +1452,7 @@
         img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85",
         desc:"Pantalon noir polyvalent pour un style propre et élégant."
       },
+
 
       {
         id:7,
@@ -1086,6 +1464,7 @@
         desc:"Bomber minimaliste inspiré du streetwear."
       },
 
+
       {
         id:8,
         name:"Denim Jacket",
@@ -1095,6 +1474,7 @@
         img:"https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=85",
         desc:"Veste denim intemporelle à porter avec toutes tes pièces."
       },
+
 
       {
         id:9,
@@ -1109,149 +1489,302 @@
     ];
 
 
+
     /* =========================
        FILTER STATE
     ========================= */
 
+
     let currentGender = "all";
+
     let currentCategory = "all";
+
+    let modalProductId = null;
+
+    let modalQuantity = 1;
+
 
 
     /* =========================
        DISPLAY PRODUCTS
     ========================= */
 
+
     function displayProducts(list = null){
 
-      const grid = document.getElementById("productGrid");
 
-      let filteredProducts = list || products;
+      const grid =
+        document.getElementById("productGrid");
+
+
+      let filteredProducts =
+        list || products;
 
 
       if(!list){
 
+
         if(currentGender !== "all"){
 
-          filteredProducts = filteredProducts.filter(
-            product => product.gender === currentGender
-          );
+          filteredProducts =
+            filteredProducts.filter(
+              product =>
+                product.gender === currentGender
+            );
 
         }
 
 
         if(currentCategory !== "all"){
 
-          filteredProducts = filteredProducts.filter(
-            product => product.category === currentCategory
-          );
+          filteredProducts =
+            filteredProducts.filter(
+              product =>
+                product.category === currentCategory
+            );
 
         }
 
       }
 
 
+
       if(filteredProducts.length === 0){
 
         grid.innerHTML = `
+
           <div class="no-products">
+
             Aucun produit trouvé.
+
           </div>
+
         `;
 
         return;
+
       }
 
 
-      grid.innerHTML = filteredProducts.map(product => {
 
-        const genderText =
-          product.gender === "hommes"
-          ? "HOMMES"
-          : "FEMMES";
+      grid.innerHTML =
+
+        filteredProducts.map(product => {
 
 
-        return `
-
-          <article class="product">
-
-            <div class="product-img">
-
-              ${
-                product.id <= 3
-                ? `<span class="badge">NOUVEAU</span>`
-                : ``
-              }
-
-              <span class="gender-badge">
-                ${genderText}
-              </span>
-
-              <img
-                src="${product.img}"
-                alt="${product.name}"
-                loading="lazy">
-
-            </div>
+          const genderText =
+            product.gender === "hommes"
+            ? "HOMMES"
+            : "FEMMES";
 
 
-            <div class="product-info">
 
-              <h3>
-                ${product.name}
-              </h3>
+          return `
 
-              <div class="category">
-                ${product.category}
-              </div>
-
-              <div class="price">
-                ${product.price} DH
-              </div>
+            <article class="product">
 
 
-              <div class="product-actions">
+              <div class="product-img">
 
-                <button
-                  class="buy"
-                  onclick="buyProduct(${product.id})">
-                  Commander
-                </button>
 
-                <button
-                  class="details"
-                  onclick="openModal(${product.id})">
-                  ↗
-                </button>
+                ${
+                  product.id <= 3
+                  ?
+                  `<span class="badge">
+                    NOUVEAU
+                  </span>`
+                  :
+                  ``
+                }
+
+
+                <span class="gender-badge">
+
+                  ${genderText}
+
+                </span>
+
+
+                <img
+                  src="${product.img}"
+                  alt="${product.name}"
+                  loading="lazy">
+
 
               </div>
 
-            </div>
 
-          </article>
 
-        `;
+              <div class="product-info">
 
-      }).join("");
+
+                <h3>
+
+                  ${product.name}
+
+                </h3>
+
+
+                <div class="category">
+
+                  ${product.category}
+
+                </div>
+
+
+                <div class="price">
+
+                  ${product.price} DH
+
+                </div>
+
+
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-box">
+
+
+                  <button
+                    type="button"
+                    onclick="changeQuantity(${product.id}, -1)">
+
+                    −
+
+                  </button>
+
+
+                  <span id="qty-${product.id}">
+
+                    1
+
+                  </span>
+
+
+                  <button
+                    type="button"
+                    onclick="changeQuantity(${product.id}, 1)">
+
+                    +
+
+                  </button>
+
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="product-actions">
+
+
+                  <button
+                    class="buy"
+                    onclick="buyProduct(${product.id})">
+
+                    Commander
+
+                  </button>
+
+
+                  <button
+                    class="details"
+                    onclick="openModal(${product.id})">
+
+                    ↗
+
+                  </button>
+
+
+                </div>
+
+
+              </div>
+
+
+            </article>
+
+          `;
+
+
+        }).join("");
 
     }
+
+
+
+    /* =========================
+       PRODUCT QUANTITY
+    ========================= */
+
+
+    function changeQuantity(id, change){
+
+
+      const quantityElement =
+        document.getElementById(`qty-${id}`);
+
+
+      if(!quantityElement){
+
+        return;
+
+      }
+
+
+      let quantity =
+        parseInt(
+          quantityElement.textContent
+        ) || 1;
+
+
+      quantity += change;
+
+
+      if(quantity < 1){
+
+        quantity = 1;
+
+      }
+
+
+      if(quantity > 99){
+
+        quantity = 99;
+
+      }
+
+
+      quantityElement.textContent =
+        quantity;
+
+    }
+
 
 
     /* =========================
        GENDER FILTER
     ========================= */
 
+
     function setGender(gender){
 
-      currentGender = gender;
+
+      currentGender =
+        gender;
 
 
       document
-        .querySelectorAll("#genderFilters .filter")
+        .querySelectorAll(
+          "#genderFilters .filter"
+        )
         .forEach(button => {
 
           button.classList.remove("active");
 
         });
+
 
 
       const selectedButton =
@@ -1261,7 +1794,9 @@
 
 
       if(selectedButton){
+
         selectedButton.classList.add("active");
+
       }
 
 
@@ -1270,22 +1805,29 @@
     }
 
 
+
     /* =========================
        CATEGORY FILTER
     ========================= */
 
+
     function setCategory(category){
 
-      currentCategory = category;
+
+      currentCategory =
+        category;
 
 
       document
-        .querySelectorAll("#categoryFilters .filter")
+        .querySelectorAll(
+          "#categoryFilters .filter"
+        )
         .forEach(button => {
 
           button.classList.remove("active");
 
         });
+
 
 
       const selectedButton =
@@ -1295,7 +1837,9 @@
 
 
       if(selectedButton){
+
         selectedButton.classList.add("active");
+
       }
 
 
@@ -1304,11 +1848,14 @@
     }
 
 
+
     /* =========================
        WHATSAPP ORDER
     ========================= */
 
+
     function buyProduct(id){
+
 
       const product =
         products.find(
@@ -1317,19 +1864,55 @@
 
 
       if(!product){
+
         return;
+
       }
 
 
+      const quantityElement =
+        document.getElementById(
+          `qty-${id}`
+        );
+
+
+      const quantity =
+        quantityElement
+        ?
+        parseInt(
+          quantityElement.textContent
+        ) || 1
+        :
+        1;
+
+
+      const total =
+        product.price * quantity;
+
+
+
       const message =
+
         `Bonjour O2WEAR 👋\n\n` +
+
         `Je souhaite commander :\n` +
-        `${product.name}\n` +
-        `Prix : ${product.price} DH\n\n`;
+
+        `Produit : ${product.name}\n` +
+
+        `Prix unitaire : ${product.price} DH\n` +
+
+        `Quantité : ${quantity}\n` +
+
+        `Total : ${total} DH\n\n` +
+
+        `Merci !`;
+
 
 
       const whatsappURL =
+
         `https://wa.me/212603701100?text=${encodeURIComponent(message)}`;
+
 
 
       window.open(
@@ -1340,11 +1923,14 @@
     }
 
 
+
     /* =========================
-       PRODUCT MODAL
+       OPEN MODAL
     ========================= */
 
+
     function openModal(id){
+
 
       const product =
         products.find(
@@ -1353,46 +1939,175 @@
 
 
       if(!product){
+
         return;
+
       }
 
 
-      document.getElementById("modalImg").src =
+      modalProductId =
+        id;
+
+
+      modalQuantity =
+        1;
+
+
+
+      document.getElementById(
+        "modalImg"
+      ).src =
         product.img;
 
 
-      document.getElementById("modalImg").alt =
+
+      document.getElementById(
+        "modalImg"
+      ).alt =
         product.name;
 
 
-      document.getElementById("modalName").textContent =
+
+      document.getElementById(
+        "modalName"
+      ).textContent =
         product.name;
 
 
-      document.getElementById("modalPrice").textContent =
+
+      document.getElementById(
+        "modalPrice"
+      ).textContent =
         product.price + " DH";
 
 
-      document.getElementById("modalDesc").textContent =
+
+      document.getElementById(
+        "modalDesc"
+      ).textContent =
         product.desc;
 
 
-      document.getElementById("modalBuy").onclick =
-        function(){
 
-          buyProduct(product.id);
+      document.getElementById(
+        "modalQty"
+      ).textContent =
+        modalQuantity;
 
-        };
 
 
-      document
-        .getElementById("productModal")
-        .classList.add("show");
+      document.getElementById(
+        "productModal"
+      ).classList.add("show");
 
     }
 
 
+
+    /* =========================
+       MODAL QUANTITY
+    ========================= */
+
+
+    function changeModalQuantity(change){
+
+
+      modalQuantity += change;
+
+
+      if(modalQuantity < 1){
+
+        modalQuantity = 1;
+
+      }
+
+
+      if(modalQuantity > 99){
+
+        modalQuantity = 99;
+
+      }
+
+
+      document.getElementById(
+        "modalQty"
+      ).textContent =
+        modalQuantity;
+
+    }
+
+
+
+    /* =========================
+       MODAL WHATSAPP
+    ========================= */
+
+
+    document.getElementById(
+      "modalBuy"
+    ).onclick = function(){
+
+
+      const product =
+        products.find(
+          item =>
+            item.id === modalProductId
+        );
+
+
+      if(!product){
+
+        return;
+
+      }
+
+
+      const total =
+        product.price *
+        modalQuantity;
+
+
+
+      const message =
+
+        `Bonjour O2WEAR 👋\n\n` +
+
+        `Je souhaite commander :\n` +
+
+        `Produit : ${product.name}\n` +
+
+        `Prix unitaire : ${product.price} DH\n` +
+
+        `Quantité : ${modalQuantity}\n` +
+
+        `Total : ${total} DH\n\n` +
+
+        `Merci !`;
+
+
+
+      const whatsappURL =
+
+        `https://wa.me/212603701100?text=${encodeURIComponent(message)}`;
+
+
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+    };
+
+
+
+    /* =========================
+       CLOSE MODAL
+    ========================= */
+
+
     function closeModal(){
+
 
       document
         .getElementById("productModal")
@@ -1401,35 +2116,57 @@
     }
 
 
+
     function closeOutside(event){
 
-      if(event.target.id === "productModal"){
+
+      if(
+        event.target.id ===
+        "productModal"
+      ){
+
         closeModal();
+
       }
 
     }
+
 
 
     /* =========================
        SEARCH
     ========================= */
 
+
     function toggleSearch(){
 
+
       const box =
-        document.getElementById("searchBox");
+        document.getElementById(
+          "searchBox"
+        );
 
 
-      if(box.style.display === "block"){
+      if(
+        box.style.display ===
+        "block"
+      ){
 
-        box.style.display = "none";
+        box.style.display =
+          "none";
 
-      }else{
+      }
 
-        box.style.display = "block";
+      else{
+
+        box.style.display =
+          "block";
+
 
         document
-          .getElementById("searchInput")
+          .getElementById(
+            "searchInput"
+          )
           .focus();
 
       }
@@ -1437,10 +2174,14 @@
     }
 
 
+
     function searchProducts(){
 
+
       const input =
-        document.getElementById("searchInput");
+        document.getElementById(
+          "searchInput"
+        );
 
 
       const query =
@@ -1449,7 +2190,10 @@
           .trim();
 
 
-      let results = products;
+
+      let results =
+        products;
+
 
 
       if(currentGender !== "all"){
@@ -1457,10 +2201,12 @@
         results =
           results.filter(
             product =>
-              product.gender === currentGender
+              product.gender ===
+              currentGender
           );
 
       }
+
 
 
       if(currentCategory !== "all"){
@@ -1468,10 +2214,12 @@
         results =
           results.filter(
             product =>
-              product.category === currentCategory
+              product.category ===
+              currentCategory
           );
 
       }
+
 
 
       if(query){
@@ -1479,25 +2227,31 @@
         results =
           results.filter(product =>
 
+
             product.name
               .toLowerCase()
               .includes(query)
 
+
             ||
+
 
             product.category
               .toLowerCase()
               .includes(query)
 
+
             ||
+
 
             product.gender
               .toLowerCase()
               .includes(query)
 
-          );
+        );
 
       }
+
 
 
       displayProducts(results);
@@ -1505,13 +2259,18 @@
     }
 
 
+
     /* =========================
        INITIAL LOAD
     ========================= */
 
+
     displayProducts();
+
 
   </script>
 
+
 </body>
+
 </html>
