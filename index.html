@@ -121,7 +121,6 @@
       position:relative;
       display:flex;
       align-items:flex-end;
-
       background:
         linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.12)),
         url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85")
@@ -200,12 +199,18 @@
       font-size:14px;
     }
 
+    .filter-title{
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
     .filters{
       display:flex;
       gap:9px;
       overflow:auto;
       padding-bottom:5px;
-      margin-bottom:25px;
+      margin-bottom:20px;
     }
 
     .filter{
@@ -217,7 +222,12 @@
       font-size:13px;
     }
 
-    .filter.active,
+    .filter.active{
+      background:#111;
+      color:#fff;
+      border-color:#111;
+    }
+
     .filter:hover{
       background:#111;
       color:#fff;
@@ -330,12 +340,10 @@
       min-height:310px;
       border-radius:22px;
       overflow:hidden;
-
       background:
         linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.1)),
         url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=85")
         center/cover;
-
       display:flex;
       align-items:center;
       padding:45px;
@@ -511,6 +519,13 @@
       outline:none;
     }
 
+    .no-products{
+      grid-column:1/-1;
+      color:#777;
+      padding:30px 0;
+      text-align:center;
+    }
+
     @media(max-width:900px){
 
       .products{
@@ -600,808 +615,903 @@
 
 <body>
 
-<div class="topbar">
-  LIVRAISON PARTOUT AU MAROC • O2WEAR
-</div>
-
-<header>
-
-  <nav>
-
-    <a href="#" class="logo">
-      O2<span>WEAR</span>
-    </a>
-
-    <div class="navlinks">
-      <a href="#shop">SHOP</a>
-      <a href="#new">NOUVEAUTÉS</a>
-      <a href="#about">À PROPOS</a>
-    </div>
-
-    <div class="nav-actions">
-
-      <button
-        class="icon-btn"
-        onclick="toggleSearch()"
-        aria-label="Recherche">
-        ⌕
-      </button>
-
-      <a
-        class="icon-btn"
-        href="#shop"
-        aria-label="Boutique">
-        🛍
-      </a>
-
-    </div>
-
-  </nav>
-
-  <div class="search-box" id="searchBox">
-
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="Rechercher un article..."
-      oninput="searchProducts()">
-
+  <div class="topbar">
+    LIVRAISON PARTOUT AU MAROC • O2WEAR
   </div>
 
-</header>
 
+  <header>
 
-<main>
+    <nav>
 
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-box">
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          O2WEAR — NEW COLLECTION
-        </div>
-
-        <h1>
-          WEAR YOUR<br>
-          OWN STYLE.
-        </h1>
-
-        <p>
-          Des pièces modernes, simples et tendance pensées pour ton quotidien.
-        </p>
-
-        <a href="#shop" class="btn">
-          Découvrir la collection →
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SHOP -->
-
-  <section class="section" id="shop">
-
-    <div class="section-head">
-
-      <div>
-
-        <h2>
-          Shop
-        </h2>
-
-        <p>
-          Nos pièces du moment
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- FILTRES GENRE -->
-
-    <div class="filters">
-
-      <button
-        class="filter active"
-        onclick="filterGender('all',this)">
-        Tout
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterGender('hommes',this)">
-        Pour Hommes
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterGender('femmes',this)">
-        Pour Femmes
-      </button>
-
-    </div>
-
-
-    <!-- FILTRES CATEGORIES -->
-
-    <div class="filters">
-
-      <button
-        class="filter active"
-        onclick="filterCategory('all',this)">
-        Toutes les catégories
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterCategory('T-shirts',this)">
-        T-shirts
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterCategory('Hoodies',this)">
-        Hoodies
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterCategory('Pantalons',this)">
-        Pantalons
-      </button>
-
-      <button
-        class="filter"
-        onclick="filterCategory('Vestes',this)">
-        Vestes
-      </button>
-
-    </div>
-
-
-    <div
-      class="products"
-      id="productGrid">
-    </div>
-
-  </section>
-
-
-  <!-- BANNER -->
-
-  <section class="section" id="new">
-
-    <div class="banner">
-
-      <div>
-
-        <div class="eyebrow">
-          O2WEAR ESSENTIALS
-        </div>
-
-        <h2>
-          Simple.<br>
-          Clean.<br>
-          O2WEAR.
-        </h2>
-
-        <p>
-          Une sélection de vêtements faciles à porter et à associer.
-        </p>
-
-        <a href="#shop" class="btn">
-          Voir les produits
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FEATURES -->
-
-  <section class="section" id="about">
-
-    <div class="features">
-
-      <div class="feature">
-
-        <div class="emoji">
-          🚚
-        </div>
-
-        <h3>
-          Livraison au Maroc
-        </h3>
-
-        <p>
-          Nous préparons soigneusement chaque commande.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="emoji">
-          💬
-        </div>
-
-        <h3>
-          Commande WhatsApp
-        </h3>
-
-        <p>
-          Commande facilement en nous envoyant un message.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="emoji">
-          ✨
-        </div>
-
-        <h3>
-          Style O2WEAR
-        </h3>
-
-        <p>
-          Des essentiels modernes pour construire ton style.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="footer-inner">
-
-    <div>
-
-      <div class="logo">
+      <a href="#" class="logo">
         O2<span>WEAR</span>
+      </a>
+
+      <div class="navlinks">
+        <a href="#shop">SHOP</a>
+        <a href="#new">NOUVEAUTÉS</a>
+        <a href="#about">À PROPOS</a>
       </div>
 
-      <p>
-        Fashion brand moderne. Découvre nos pièces et commande directement via WhatsApp.
-      </p>
+      <div class="nav-actions">
+
+        <button
+          class="icon-btn"
+          onclick="toggleSearch()"
+          aria-label="Recherche">
+          ⌕
+        </button>
+
+        <a
+          class="icon-btn"
+          href="#shop"
+          aria-label="Boutique">
+          🛍
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <div class="search-box" id="searchBox">
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Rechercher un article..."
+        oninput="searchProducts()">
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-box">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            O2WEAR — NEW COLLECTION
+          </div>
+
+          <h1>
+            WEAR YOUR<br>
+            OWN STYLE.
+          </h1>
+
+          <p>
+            Des pièces modernes, simples et tendance pensées pour ton quotidien.
+          </p>
+
+          <a href="#shop" class="btn">
+            Découvrir la collection →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SHOP -->
+
+    <section class="section" id="shop">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2>
+            Shop
+          </h2>
+
+          <p>
+            Nos pièces du moment
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- GENRE -->
+
+      <div class="filter-title">
+        COLLECTION
+      </div>
+
+      <div class="filters" id="genderFilters">
+
+        <button
+          class="filter active"
+          data-gender="all"
+          onclick="setGender('all')">
+          Tout
+        </button>
+
+        <button
+          class="filter"
+          data-gender="hommes"
+          onclick="setGender('hommes')">
+          Pour Hommes
+        </button>
+
+        <button
+          class="filter"
+          data-gender="femmes"
+          onclick="setGender('femmes')">
+          Pour Femmes
+        </button>
+
+      </div>
+
+
+      <!-- CATEGORIES -->
+
+      <div class="filter-title">
+        CATÉGORIES
+      </div>
+
+      <div class="filters" id="categoryFilters">
+
+        <button
+          class="filter active"
+          data-category="all"
+          onclick="setCategory('all')">
+          Toutes
+        </button>
+
+        <button
+          class="filter"
+          data-category="T-shirts"
+          onclick="setCategory('T-shirts')">
+          T-shirts
+        </button>
+
+        <button
+          class="filter"
+          data-category="Hoodies"
+          onclick="setCategory('Hoodies')">
+          Hoodies
+        </button>
+
+        <button
+          class="filter"
+          data-category="Pantalons"
+          onclick="setCategory('Pantalons')">
+          Pantalons
+        </button>
+
+        <button
+          class="filter"
+          data-category="Vestes"
+          onclick="setCategory('Vestes')">
+          Vestes
+        </button>
+
+      </div>
+
+
+      <div
+        class="products"
+        id="productGrid">
+      </div>
+
+    </section>
+
+
+    <!-- BANNER -->
+
+    <section class="section" id="new">
+
+      <div class="banner">
+
+        <div>
+
+          <div class="eyebrow">
+            O2WEAR ESSENTIALS
+          </div>
+
+          <h2>
+            Simple.<br>
+            Clean.<br>
+            O2WEAR.
+          </h2>
+
+          <p>
+            Une sélection de vêtements faciles à porter et à associer.
+          </p>
+
+          <a href="#shop" class="btn">
+            Voir les produits
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="section" id="about">
+
+      <div class="features">
+
+        <div class="feature">
+
+          <div class="emoji">
+            🚚
+          </div>
+
+          <h3>
+            Livraison au Maroc
+          </h3>
+
+          <p>
+            Nous préparons soigneusement chaque commande.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="emoji">
+            💬
+          </div>
+
+          <h3>
+            Commande WhatsApp
+          </h3>
+
+          <p>
+            Commande facilement en nous envoyant un message.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="emoji">
+            ✨
+          </div>
+
+          <h3>
+            Style O2WEAR
+          </h3>
+
+          <p>
+            Des essentiels modernes pour construire ton style.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="logo">
+          O2<span>WEAR</span>
+        </div>
+
+        <p>
+          Fashion brand moderne. Découvre nos pièces et commande directement via WhatsApp.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#shop">
+          Shop
+        </a>
+
+        <a href="#new">
+          Nouveautés
+        </a>
+
+        <a href="#about">
+          À propos
+        </a>
+
+        <a
+          href="https://wa.me/212603701100"
+          target="_blank">
+          WhatsApp
+        </a>
+
+      </div>
 
     </div>
 
 
-    <div class="footer-links">
+    <div class="copyright">
+      © 2026 O2WEAR. Tous droits réservés.
+    </div>
 
-      <a href="#shop">
-        Shop
-      </a>
+  </footer>
 
-      <a href="#new">
-        Nouveautés
-      </a>
 
-      <a href="#about">
-        À propos
-      </a>
+  <!-- WHATSAPP -->
 
-      <a
-        href="https://wa.me/212603701100"
-        target="_blank">
-        WhatsApp
-      </a>
+  <a
+    class="wa"
+    href="https://wa.me/212603701100"
+    target="_blank"
+    aria-label="WhatsApp">
+    ◉
+  </a>
+
+
+  <!-- MODAL -->
+
+  <div
+    class="modal"
+    id="productModal"
+    onclick="closeOutside(event)">
+
+    <div class="modal-box">
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+      <img
+        id="modalImg"
+        src=""
+        alt="">
+
+      <h2 id="modalName"></h2>
+
+      <div
+        class="modal-price"
+        id="modalPrice">
+      </div>
+
+      <p id="modalDesc"></p>
+
+      <button
+        class="btn dark"
+        id="modalBuy"
+        style="width:100%">
+        Commander sur WhatsApp
+      </button>
 
     </div>
 
   </div>
 
 
-  <div class="copyright">
-    © 2026 O2WEAR. Tous droits réservés.
-  </div>
+  <script>
 
-</footer>
+    /* =========================
+       PRODUCTS
+    ========================= */
 
+    const products = [
 
-<!-- WHATSAPP -->
+      {
+        id:1,
+        name:"Oversized Black T-Shirt",
+        category:"T-shirts",
+        gender:"hommes",
+        price:149,
+        img:"6d813741218046f77069c4202580ca61.jpg",
+        desc:"T-shirt oversized noir, coupe moderne et facile à porter."
+      },
 
-<a
-  class="wa"
-  href="https://wa.me/212603701100"
-  target="_blank"
-  aria-label="WhatsApp">
-  ◉
-</a>
+      {
+        id:2,
+        name:"Essential White T-Shirt",
+        category:"T-shirts",
+        gender:"hommes",
+        price:129,
+        img:"https://images.unsplash.com/photo-1583743814966-8936f37f4c75?auto=format&fit=crop&w=800&q=85",
+        desc:"Un essentiel blanc minimaliste pour tous les jours."
+      },
 
+      {
+        id:3,
+        name:"O2 Essential Hoodie",
+        category:"Hoodies",
+        gender:"hommes",
+        price:299,
+        img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85",
+        desc:"Hoodie confortable au style clean, parfait pour un look casual."
+      },
 
-<!-- MODAL -->
+      {
+        id:4,
+        name:"Grey Oversized Hoodie",
+        category:"Hoodies",
+        gender:"hommes",
+        price:319,
+        img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85",
+        desc:"Hoodie gris oversized avec une silhouette moderne."
+      },
 
-<div
-  class="modal"
-  id="productModal"
-  onclick="closeOutside(event)">
+      {
+        id:5,
+        name:"Relaxed Cargo Pants",
+        category:"Pantalons",
+        gender:"hommes",
+        price:279,
+        img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85",
+        desc:"Pantalon cargo confortable avec une coupe décontractée."
+      },
 
-  <div class="modal-box">
+      {
+        id:6,
+        name:"Classic Black Pants",
+        category:"Pantalons",
+        gender:"hommes",
+        price:249,
+        img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85",
+        desc:"Pantalon noir polyvalent pour un style propre et élégant."
+      },
 
-    <button
-      class="close"
-      onclick="closeModal()">
-      ×
-    </button>
+      {
+        id:7,
+        name:"Minimal Bomber Jacket",
+        category:"Vestes",
+        gender:"hommes",
+        price:449,
+        img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85",
+        desc:"Bomber minimaliste inspiré du streetwear."
+      },
 
-    <img
-      id="modalImg"
-      src=""
-      alt="">
+      {
+        id:8,
+        name:"Denim Jacket",
+        category:"Vestes",
+        gender:"hommes",
+        price:399,
+        img:"https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=85",
+        desc:"Veste denim intemporelle à porter avec toutes tes pièces."
+      },
 
-    <h2 id="modalName"></h2>
+      {
+        id:9,
+        name:"Black Overshirt",
+        category:"Vestes",
+        gender:"hommes",
+        price:80,
+        img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=85",
+        desc:"Black overshirt élégante et polyvalente, parfaite pour compléter un look moderne."
+      }
 
-    <div
-      class="modal-price"
-      id="modalPrice">
-    </div>
-
-    <p id="modalDesc"></p>
-
-    <button
-      class="btn dark"
-      id="modalBuy"
-      style="width:100%">
-      Commander sur WhatsApp
-    </button>
-
-  </div>
-
-</div>
-
-
-<script>
-
-const products = [
-
-  {
-    id:1,
-    name:"Oversized Black T-Shirt",
-    category:"T-shirts",
-    gender:"hommes",
-    price:149,
-    img:"6d813741218046f77069c4202580ca61.jpg",
-    desc:"T-shirt oversized noir, coupe moderne et facile à porter."
-  },
-
-  {
-    id:2,
-    name:"Essential White T-Shirt",
-    category:"T-shirts",
-    gender:"hommes",
-    price:129,
-    img:"https://images.unsplash.com/photo-1583743814966-8936f37f4c75?auto=format&fit=crop&w=800&q=85",
-    desc:"Un essentiel blanc minimaliste pour tous les jours."
-  },
-
-  {
-    id:3,
-    name:"O2 Essential Hoodie",
-    category:"Hoodies",
-    gender:"hommes",
-    price:299,
-    img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85",
-    desc:"Hoodie confortable au style clean, parfait pour un look casual."
-  },
-
-  {
-    id:4,
-    name:"Grey Oversized Hoodie",
-    category:"Hoodies",
-    gender:"hommes",
-    price:319,
-    img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85",
-    desc:"Hoodie gris oversized avec une silhouette moderne."
-  },
-
-  {
-    id:5,
-    name:"Relaxed Cargo Pants",
-    category:"Pantalons",
-    gender:"hommes",
-    price:279,
-    img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85",
-    desc:"Pantalon cargo confortable avec une coupe décontractée."
-  },
-
-  {
-    id:6,
-    name:"Classic Black Pants",
-    category:"Pantalons",
-    gender:"hommes",
-    price:249,
-    img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85",
-    desc:"Pantalon noir polyvalent pour un style propre et élégant."
-  },
-
-  {
-    id:7,
-    name:"Minimal Bomber Jacket",
-    category:"Vestes",
-    gender:"hommes",
-    price:449,
-    img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85",
-    desc:"Bomber minimaliste inspiré du streetwear."
-  },
-
-  {
-    id:8,
-    name:"Denim Jacket",
-    category:"Vestes",
-    gender:"hommes",
-    price:399,
-    img:"https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=85",
-    desc:"Veste denim intemporelle à porter avec toutes tes pièces."
-  },
-
-  {
-    id:9,
-    name:"Black Overshirt",
-    category:"Vestes",
-    gender:"hommes",
-    price:80,
-    img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=85",
-    desc:"Black overshirt élégante et polyvalente, parfaite pour compléter un look moderne."
-  }
-
-];
+    ];
 
 
-let currentGender = "all";
-let currentCategory = "all";
+    /* =========================
+       FILTER STATE
+    ========================= */
+
+    let currentGender = "all";
+    let currentCategory = "all";
 
 
-function displayProducts(){
+    /* =========================
+       DISPLAY PRODUCTS
+    ========================= */
 
-  const grid=document.getElementById("productGrid");
+    function displayProducts(list = null){
 
-  let list=products;
+      const grid = document.getElementById("productGrid");
 
-
-  if(currentGender!=="all"){
-    list=list.filter(
-      p=>p.gender===currentGender
-    );
-  }
+      let filteredProducts = list || products;
 
 
-  if(currentCategory!=="all"){
-    list=list.filter(
-      p=>p.category===currentCategory
-    );
-  }
+      if(!list){
 
+        if(currentGender !== "all"){
 
-  if(!list.length){
+          filteredProducts = filteredProducts.filter(
+            product => product.gender === currentGender
+          );
 
-    grid.innerHTML=`
-      <p style="grid-column:1/-1;color:#777;padding:30px 0">
-        Aucun produit trouvé.
-      </p>
-    `;
-
-    return;
-  }
-
-
-  grid.innerHTML=list.map(p=>`
-
-    <article class="product">
-
-      <div class="product-img">
-
-        ${p.id<=3
-          ? '<span class="badge">NOUVEAU</span>'
-          : ''
         }
 
-        <span class="gender-badge">
-          ${p.gender==="hommes" ? "HOMMES" : "FEMMES"}
-        </span>
 
-        <img
-          src="${p.img}"
-          alt="${p.name}"
-          loading="lazy">
+        if(currentCategory !== "all"){
 
-      </div>
+          filteredProducts = filteredProducts.filter(
+            product => product.category === currentCategory
+          );
 
-
-      <div class="product-info">
-
-        <h3>
-          ${p.name}
-        </h3>
-
-        <div class="category">
-          ${p.category}
-        </div>
-
-        <div class="price">
-          ${p.price} DH
-        </div>
-
-
-        <div class="product-actions">
-
-          <button
-            class="buy"
-            onclick="buyProduct(${p.id})">
-            Commander
-          </button>
-
-          <button
-            class="details"
-            onclick="openModal(${p.id})">
-            ↗
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `).join("");
-
-}
-
-
-function filterGender(gender,btn){
-
-  currentGender=gender;
-
-  document
-    .querySelectorAll(".filters:first-of-type .filter")
-    .forEach(x=>x.classList.remove("active"));
-
-  btn.classList.add("active");
-
-  displayProducts();
-
-}
-
-
-function filterCategory(category,btn){
-
-  currentCategory=category;
-
-  const categoryButtons =
-    document.querySelectorAll(".filters:nth-of-type(2) .filter");
-
-  categoryButtons.forEach(
-    x=>x.classList.remove("active")
-  );
-
-  btn.classList.add("active");
-
-  displayProducts();
-
-}
-
-
-function buyProduct(id){
-
-  const p=products.find(x=>x.id===id);
-
-  const message=
-    `Bonjour O2WEAR 👋%0A%0A` +
-    `Je souhaite commander :%0A` +
-    `*${encodeURIComponent(p.name)}*%0A` +
-    `Prix : ${p.price} DH%0A%0A`;
-
-  window.open(
-    `https://wa.me/212603701100?text=${message}`,
-    "_blank"
-  );
-
-}
-
-
-function openModal(id){
-
-  const p=products.find(x=>x.id===id);
-
-  document.getElementById("modalImg").src=p.img;
-
-  document.getElementById("modalImg").alt=p.name;
-
-  document.getElementById("modalName").textContent=p.name;
-
-  document.getElementById("modalPrice").textContent=
-    p.price+" DH";
-
-  document.getElementById("modalDesc").textContent=
-    p.desc;
-
-  document.getElementById("modalBuy").onclick=
-    ()=>buyProduct(id);
-
-  document
-    .getElementById("productModal")
-    .classList.add("show");
-
-}
-
-
-function closeModal(){
-
-  document
-    .getElementById("productModal")
-    .classList.remove("show");
-
-}
-
-
-function closeOutside(e){
-
-  if(e.target.id==="productModal"){
-    closeModal();
-  }
-
-}
-
-
-function toggleSearch(){
-
-  const box=document.getElementById("searchBox");
-
-  box.style.display =
-    box.style.display==="block"
-    ? "none"
-    : "block";
-
-  if(box.style.display==="block"){
-    document
-      .getElementById("searchInput")
-      .focus();
-  }
-
-}
-
-
-function searchProducts(){
-
-  const q=
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
-
-
-  let list=products.filter(p=>
-
-    p.name.toLowerCase().includes(q) ||
-
-    p.category.toLowerCase().includes(q) ||
-
-    p.gender.toLowerCase().includes(q)
-
-  );
-
-
-  if(currentGender!=="all"){
-
-    list=list.filter(
-      p=>p.gender===currentGender
-    );
-
-  }
-
-
-  if(currentCategory!=="all"){
-
-    list=list.filter(
-      p=>p.category===currentCategory
-    );
-
-  }
-
-
-  const grid=document.getElementById("productGrid");
-
-
-  if(!list.length){
-
-    grid.innerHTML=`
-      <p style="grid-column:1/-1;color:#777;padding:30px 0">
-        Aucun produit trouvé.
-      </p>
-    `;
-
-    return;
-  }
-
-
-  grid.innerHTML=list.map(p=>`
-
-    <article class="product">
-
-      <div class="product-img">
-
-        ${p.id<=3
-          ? '<span class="badge">NOUVEAU</span>'
-          : ''
         }
 
-        <span class="gender-badge">
-          ${p.gender==="hommes" ? "HOMMES" : "FEMMES"}
-        </span>
-
-        <img
-          src="${p.img}"
-          alt="${p.name}"
-          loading="lazy">
-
-      </div>
+      }
 
 
-      <div class="product-info">
+      if(filteredProducts.length === 0){
 
-        <h3>${p.name}</h3>
+        grid.innerHTML = `
+          <div class="no-products">
+            Aucun produit trouvé.
+          </div>
+        `;
 
-        <div class="category">
-          ${p.category}
-        </div>
-
-        <div class="price">
-          ${p.price} DH
-        </div>
-
-        <div class="product-actions">
-
-          <button
-            class="buy"
-            onclick="buyProduct(${p.id})">
-            Commander
-          </button>
-
-          <button
-            class="details"
-            onclick="openModal(${p.id})">
-            ↗
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `).join("");
-
-}
+        return;
+      }
 
 
-displayProducts();
+      grid.innerHTML = filteredProducts.map(product => {
 
-</script>
+        const genderText =
+          product.gender === "hommes"
+          ? "HOMMES"
+          : "FEMMES";
+
+
+        return `
+
+          <article class="product">
+
+            <div class="product-img">
+
+              ${
+                product.id <= 3
+                ? `<span class="badge">NOUVEAU</span>`
+                : ``
+              }
+
+              <span class="gender-badge">
+                ${genderText}
+              </span>
+
+              <img
+                src="${product.img}"
+                alt="${product.name}"
+                loading="lazy">
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h3>
+                ${product.name}
+              </h3>
+
+              <div class="category">
+                ${product.category}
+              </div>
+
+              <div class="price">
+                ${product.price} DH
+              </div>
+
+
+              <div class="product-actions">
+
+                <button
+                  class="buy"
+                  onclick="buyProduct(${product.id})">
+                  Commander
+                </button>
+
+                <button
+                  class="details"
+                  onclick="openModal(${product.id})">
+                  ↗
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+    }
+
+
+    /* =========================
+       GENDER FILTER
+    ========================= */
+
+    function setGender(gender){
+
+      currentGender = gender;
+
+
+      document
+        .querySelectorAll("#genderFilters .filter")
+        .forEach(button => {
+
+          button.classList.remove("active");
+
+        });
+
+
+      const selectedButton =
+        document.querySelector(
+          `#genderFilters .filter[data-gender="${gender}"]`
+        );
+
+
+      if(selectedButton){
+        selectedButton.classList.add("active");
+      }
+
+
+      displayProducts();
+
+    }
+
+
+    /* =========================
+       CATEGORY FILTER
+    ========================= */
+
+    function setCategory(category){
+
+      currentCategory = category;
+
+
+      document
+        .querySelectorAll("#categoryFilters .filter")
+        .forEach(button => {
+
+          button.classList.remove("active");
+
+        });
+
+
+      const selectedButton =
+        document.querySelector(
+          `#categoryFilters .filter[data-category="${category}"]`
+        );
+
+
+      if(selectedButton){
+        selectedButton.classList.add("active");
+      }
+
+
+      displayProducts();
+
+    }
+
+
+    /* =========================
+       WHATSAPP ORDER
+    ========================= */
+
+    function buyProduct(id){
+
+      const product =
+        products.find(
+          item => item.id === id
+        );
+
+
+      if(!product){
+        return;
+      }
+
+
+      const message =
+        `Bonjour O2WEAR 👋\n\n` +
+        `Je souhaite commander :\n` +
+        `${product.name}\n` +
+        `Prix : ${product.price} DH\n\n`;
+
+
+      const whatsappURL =
+        `https://wa.me/212603701100?text=${encodeURIComponent(message)}`;
+
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+    }
+
+
+    /* =========================
+       PRODUCT MODAL
+    ========================= */
+
+    function openModal(id){
+
+      const product =
+        products.find(
+          item => item.id === id
+        );
+
+
+      if(!product){
+        return;
+      }
+
+
+      document.getElementById("modalImg").src =
+        product.img;
+
+
+      document.getElementById("modalImg").alt =
+        product.name;
+
+
+      document.getElementById("modalName").textContent =
+        product.name;
+
+
+      document.getElementById("modalPrice").textContent =
+        product.price + " DH";
+
+
+      document.getElementById("modalDesc").textContent =
+        product.desc;
+
+
+      document.getElementById("modalBuy").onclick =
+        function(){
+
+          buyProduct(product.id);
+
+        };
+
+
+      document
+        .getElementById("productModal")
+        .classList.add("show");
+
+    }
+
+
+    function closeModal(){
+
+      document
+        .getElementById("productModal")
+        .classList.remove("show");
+
+    }
+
+
+    function closeOutside(event){
+
+      if(event.target.id === "productModal"){
+        closeModal();
+      }
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function toggleSearch(){
+
+      const box =
+        document.getElementById("searchBox");
+
+
+      if(box.style.display === "block"){
+
+        box.style.display = "none";
+
+      }else{
+
+        box.style.display = "block";
+
+        document
+          .getElementById("searchInput")
+          .focus();
+
+      }
+
+    }
+
+
+    function searchProducts(){
+
+      const input =
+        document.getElementById("searchInput");
+
+
+      const query =
+        input.value
+          .toLowerCase()
+          .trim();
+
+
+      let results = products;
+
+
+      if(currentGender !== "all"){
+
+        results =
+          results.filter(
+            product =>
+              product.gender === currentGender
+          );
+
+      }
+
+
+      if(currentCategory !== "all"){
+
+        results =
+          results.filter(
+            product =>
+              product.category === currentCategory
+          );
+
+      }
+
+
+      if(query){
+
+        results =
+          results.filter(product =>
+
+            product.name
+              .toLowerCase()
+              .includes(query)
+
+            ||
+
+            product.category
+              .toLowerCase()
+              .includes(query)
+
+            ||
+
+            product.gender
+              .toLowerCase()
+              .includes(query)
+
+          );
+
+      }
+
+
+      displayProducts(results);
+
+    }
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
+
+    displayProducts();
+
+  </script>
 
 </body>
 </html>
