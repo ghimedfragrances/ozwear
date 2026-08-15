@@ -30,7 +30,7 @@ body{
 a{text-decoration:none;color:inherit}
 button{font:inherit;cursor:pointer}
 
-/* TOPBAR */
+/* TOP */
 .topbar{
   background:#111;
   color:#fff;
@@ -91,9 +91,8 @@ nav{
   display:grid;
   place-items:center;
   font-size:18px;
+  position:relative;
 }
-
-.cart-btn{position:relative}
 
 .cart-count{
   position:absolute;
@@ -101,12 +100,10 @@ nav{
   right:-5px;
   min-width:19px;
   height:19px;
-  padding:0 5px;
-  border-radius:20px;
+  border-radius:50%;
   background:#111;
   color:#fff;
   font-size:10px;
-  font-weight:700;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -187,11 +184,6 @@ h1{
   font-weight:700;
 }
 
-.btn.dark{
-  background:#111;
-  color:#fff;
-}
-
 /* SECTIONS */
 .section{
   max-width:1200px;
@@ -208,7 +200,6 @@ h1{
 
 .section h2{
   font-size:32px;
-  letter-spacing:-1px;
 }
 
 .section-head p{
@@ -241,8 +232,7 @@ h1{
   font-size:13px;
 }
 
-.filter.active,
-.filter:hover{
+.filter.active{
   background:#111;
   color:#fff;
   border-color:#111;
@@ -326,35 +316,6 @@ h1{
   font-size:16px;
 }
 
-/* QUANTITY */
-.quantity-box{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:15px;
-  margin-top:12px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:6px;
-}
-
-.quantity-box button{
-  width:30px;
-  height:30px;
-  border:0;
-  background:#111;
-  color:#fff;
-  border-radius:7px;
-  font-size:18px;
-}
-
-.quantity-box span{
-  min-width:25px;
-  text-align:center;
-  font-weight:700;
-}
-
-/* PRODUCT BUTTON */
 .product-actions{
   display:flex;
   gap:8px;
@@ -492,40 +453,42 @@ footer p{
 }
 
 /* CART */
-.cart-modal{
+.overlay{
   position:fixed;
   inset:0;
   background:#0008;
   display:none;
-  justify-content:flex-end;
   z-index:300;
 }
 
-.cart-modal.show{
-  display:flex;
+.overlay.show{
+  display:block;
 }
 
-.cart-box{
-  background:#fff;
+.cart-panel{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
   width:100%;
   max-width:480px;
-  height:100%;
+  background:#fff;
   padding:25px;
   overflow-y:auto;
 }
 
 .cart-header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  justify-content:space-between;
+  margin-bottom:25px;
 }
 
 .cart-header h2{
   font-size:25px;
 }
 
-.cart-close{
+.close{
   width:40px;
   height:40px;
   border:1px solid var(--line);
@@ -534,7 +497,7 @@ footer p{
   font-size:22px;
 }
 
-.cart-empty{
+.empty{
   text-align:center;
   color:#777;
   padding:60px 10px;
@@ -554,54 +517,48 @@ footer p{
   border-radius:10px;
 }
 
-.cart-item-info{
+.cart-info{
   flex:1;
 }
 
-.cart-item-info h3{
+.cart-info h3{
   font-size:14px;
   margin-bottom:5px;
 }
 
-.cart-item-price{
-  font-size:13px;
+.cart-price{
   color:#666;
-  margin-bottom:9px;
+  font-size:13px;
 }
 
-.cart-quantity{
+.cart-qty{
   display:flex;
   align-items:center;
   gap:7px;
+  margin-top:10px;
 }
 
-.cart-quantity button{
-  width:27px;
-  height:27px;
+.cart-qty button{
+  width:28px;
+  height:28px;
   border:0;
   background:#111;
   color:#fff;
   border-radius:6px;
 }
 
-.cart-quantity span{
-  min-width:20px;
-  text-align:center;
-  font-weight:700;
+.remove{
+  background:#eee!important;
+  color:#111!important;
 }
 
-.remove-btn{
-  background:#eee !important;
-  color:#111 !important;
-}
-
-.cart-footer{
-  margin-top:25px;
+.cart-bottom{
   border-top:1px solid var(--line);
+  margin-top:20px;
   padding-top:20px;
 }
 
-.cart-total{
+.total{
   display:flex;
   justify-content:space-between;
   font-size:18px;
@@ -609,7 +566,7 @@ footer p{
   margin-bottom:18px;
 }
 
-.checkout-btn{
+.checkout{
   width:100%;
   border:0;
   background:#111;
@@ -619,85 +576,81 @@ footer p{
   font-weight:800;
 }
 
-/* CHECKOUT FORM */
-.checkout-modal{
+/* CHECKOUT */
+.checkout-overlay{
   position:fixed;
   inset:0;
   background:#0008;
   display:none;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:18px;
   z-index:400;
 }
 
-.checkout-modal.show{
+.checkout-overlay.show{
   display:flex;
 }
 
 .checkout-box{
-  background:#fff;
   width:100%;
   max-width:500px;
-  max-height:92vh;
+  max-height:94vh;
   overflow-y:auto;
+  background:#fff;
   border-radius:20px;
   padding:25px;
   position:relative;
 }
 
 .checkout-box h2{
-  font-size:27px;
+  font-size:26px;
   margin-bottom:5px;
 }
 
-.checkout-subtitle{
+.subtitle{
   color:#777;
   font-size:13px;
   margin-bottom:22px;
 }
 
-.form-group{
+.field{
   margin-bottom:15px;
 }
 
-.form-group label{
+.field label{
   display:block;
   font-size:12px;
   font-weight:800;
   margin-bottom:7px;
 }
 
-.form-group input,
-.form-group textarea{
+.field input,
+.field textarea{
   width:100%;
   border:1px solid #ddd;
   border-radius:10px;
-  padding:13px 14px;
+  padding:13px;
   outline:none;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif;
   font-size:14px;
 }
 
-.form-group textarea{
+.field textarea{
   min-height:90px;
   resize:vertical;
 }
 
-.required{
-  color:#d00;
-}
-
-.order-summary{
+.summary{
   background:#f7f7f5;
   border-radius:12px;
   padding:15px;
   margin:20px 0;
 }
 
-.order-summary-title{
-  font-weight:800;
+.summary-title{
   font-size:14px;
+  font-weight:800;
   margin-bottom:10px;
 }
 
@@ -705,20 +658,20 @@ footer p{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-size:13px;
   padding:5px 0;
+  font-size:13px;
 }
 
 .summary-total{
   border-top:1px solid #ddd;
-  margin-top:8px;
   padding-top:10px;
+  margin-top:8px;
   display:flex;
   justify-content:space-between;
   font-weight:800;
 }
 
-.confirm-btn{
+.confirm{
   width:100%;
   border:0;
   background:#25D366;
@@ -728,7 +681,7 @@ footer p{
   font-weight:800;
 }
 
-.cancel-btn{
+.cancel{
   width:100%;
   border:0;
   background:#eee;
@@ -739,11 +692,10 @@ footer p{
   margin-top:9px;
 }
 
-.error-message{
+.error{
   display:none;
   background:#fff0f0;
   color:#b00000;
-  border:1px solid #ffd0d0;
   padding:10px;
   border-radius:9px;
   font-size:12px;
@@ -751,7 +703,7 @@ footer p{
 }
 
 /* PRODUCT MODAL */
-.modal{
+.product-overlay{
   position:fixed;
   inset:0;
   background:#0008;
@@ -762,11 +714,11 @@ footer p{
   z-index:500;
 }
 
-.modal.show{
+.product-overlay.show{
   display:flex;
 }
 
-.modal-box{
+.product-modal{
   background:#fff;
   max-width:470px;
   width:100%;
@@ -775,16 +727,7 @@ footer p{
   position:relative;
 }
 
-.modal-close{
-  position:absolute;
-  right:15px;
-  top:12px;
-  border:0;
-  background:none;
-  font-size:24px;
-}
-
-.modal-box img{
+.product-modal img{
   width:100%;
   height:260px;
   object-fit:cover;
@@ -792,7 +735,7 @@ footer p{
   margin:12px 0 17px;
 }
 
-.modal-box h2{
+.product-modal h2{
   font-size:25px;
 }
 
@@ -801,95 +744,97 @@ footer p{
   margin:7px 0 15px;
 }
 
-.modal-box p{
+.product-modal p{
   color:#666;
   font-size:14px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media(max-width:900px){
 
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
+.products{
+  grid-template-columns:repeat(2,1fr);
+}
 
-  .navlinks{
-    display:none;
-  }
+.navlinks{
+  display:none;
+}
 
-  .product-img{
-    height:300px;
-  }
+.product-img{
+  height:300px;
+}
+
 }
 
 @media(max-width:600px){
 
-  nav{
-    height:64px;
-  }
+nav{
+  height:64px;
+}
 
-  .logo{
-    font-size:22px;
-  }
+.logo{
+  font-size:22px;
+}
 
-  .hero-box{
-    min-height:470px;
-  }
+.hero-box{
+  min-height:470px;
+}
 
-  .hero-content{
-    padding:28px;
-  }
+.hero-content{
+  padding:28px;
+}
 
-  .hero-content p{
-    font-size:15px;
-  }
+.hero-content p{
+  font-size:15px;
+}
 
-  .section{
-    margin-top:55px;
-  }
+.section{
+  margin-top:55px;
+}
 
-  .section h2{
-    font-size:26px;
-  }
+.section h2{
+  font-size:26px;
+}
 
-  .products{
-    gap:10px;
-  }
+.products{
+  gap:10px;
+}
 
-  .product-img{
-    height:245px;
-  }
+.product-img{
+  height:245px;
+}
 
-  .product-info{
-    padding:11px;
-  }
+.product-info{
+  padding:11px;
+}
 
-  .banner{
-    padding:28px;
-    min-height:330px;
-  }
+.banner{
+  padding:28px;
+  min-height:330px;
+}
 
-  .banner h2{
-    font-size:34px;
-  }
+.banner h2{
+  font-size:34px;
+}
 
-  .features{
-    grid-template-columns:1fr;
-    margin-top:55px;
-  }
+.features{
+  grid-template-columns:1fr;
+  margin-top:55px;
+}
 
-  .footer-inner{
-    flex-direction:column;
-  }
+.footer-inner{
+  flex-direction:column;
+}
 
-  .footer-links{
-    flex-wrap:wrap;
-  }
+.footer-links{
+  flex-wrap:wrap;
+}
 
-  .wa{
-    right:15px;
-    bottom:15px;
-  }
+.wa{
+  right:15px;
+  bottom:15px;
+}
+
 }
 </style>
 </head>
@@ -920,7 +865,7 @@ O2<span>WEAR</span>
 ⌕
 </button>
 
-<button class="icon-btn cart-btn" onclick="openCart()">
+<button class="icon-btn" onclick="openCart()">
 🛒
 <span class="cart-count" id="cartCount">0</span>
 </button>
@@ -930,11 +875,13 @@ O2<span>WEAR</span>
 </nav>
 
 <div class="search-box" id="searchBox">
+
 <input
 id="searchInput"
 type="search"
 placeholder="Rechercher un article..."
 oninput="displayProducts()">
+
 </div>
 
 </header>
@@ -991,19 +938,19 @@ POUR QUI ?
 
 <button
 class="filter active"
-onclick="setGender('all',this)">
+onclick="filterGender('all',this)">
 Tout
 </button>
 
 <button
 class="filter"
-onclick="setGender('hommes',this)">
+onclick="filterGender('hommes',this)">
 Pour Hommes
 </button>
 
 <button
 class="filter"
-onclick="setGender('femmes',this)">
+onclick="filterGender('femmes',this)">
 Pour Femmes
 </button>
 
@@ -1018,31 +965,31 @@ CATÉGORIES
 
 <button
 class="filter active"
-onclick="setCategory('all',this)">
+onclick="filterCategory('all',this)">
 Toutes
 </button>
 
 <button
 class="filter"
-onclick="setCategory('T-shirts',this)">
+onclick="filterCategory('T-shirts',this)">
 T-shirts
 </button>
 
 <button
 class="filter"
-onclick="setCategory('Hoodies',this)">
+onclick="filterCategory('Hoodies',this)">
 Hoodies
 </button>
 
 <button
 class="filter"
-onclick="setCategory('Pantalons',this)">
+onclick="filterCategory('Pantalons',this)">
 Pantalons
 </button>
 
 <button
 class="filter"
-onclick="setCategory('Vestes',this)">
+onclick="filterCategory('Vestes',this)">
 Vestes
 </button>
 
@@ -1157,21 +1104,21 @@ target="_blank">
 </a>
 
 
-<!-- CART -->
+<!-- PANIER -->
 
 <div
-class="cart-modal"
-id="cartModal"
+class="overlay"
+id="cartOverlay"
 onclick="closeCartOutside(event)">
 
-<div class="cart-box">
+<div class="cart-panel">
 
 <div class="cart-header">
 
-<h2>Mon panier</h2>
+<h2>Votre panier</h2>
 
 <button
-class="cart-close"
+class="close"
 onclick="closeCart()">
 ×
 </button>
@@ -1180,17 +1127,26 @@ onclick="closeCart()">
 
 <div id="cartItems"></div>
 
-<div class="cart-footer" id="cartFooter">
+<div
+class="cart-bottom"
+id="cartBottom">
 
-<div class="cart-total">
+<div class="total">
+
 <span>Total</span>
-<span id="cartTotal">0 DH</span>
+
+<span id="cartTotal">
+0 DH
+</span>
+
 </div>
 
 <button
-class="checkout-btn"
+class="checkout"
 onclick="openCheckout()">
-Commander
+
+Commander via WhatsApp
+
 </button>
 
 </div>
@@ -1200,17 +1156,18 @@ Commander
 </div>
 
 
-<!-- CHECKOUT FORM -->
+<!-- FORMULAIRE -->
 
 <div
-class="checkout-modal"
-id="checkoutModal">
+class="checkout-overlay"
+id="checkoutOverlay">
 
 <div class="checkout-box">
 
 <button
-class="modal-close"
-onclick="closeCheckout()">
+class="close"
+onclick="closeCheckout()"
+style="position:absolute;right:15px;top:15px;">
 ×
 </button>
 
@@ -1218,92 +1175,94 @@ onclick="closeCheckout()">
 Finaliser votre commande
 </h2>
 
-<p class="checkout-subtitle">
-Remplissez vos informations avant de confirmer votre commande.
+<p class="subtitle">
+Veuillez remplir vos informations pour recevoir votre commande.
 </p>
 
 
 <div
-class="error-message"
+class="error"
 id="formError">
+
 Veuillez remplir tous les champs obligatoires.
+
 </div>
 
 
-<form onsubmit="confirmOrder(event)">
+<form onsubmit="submitOrder(event)">
 
-<div class="form-group">
+<div class="field">
 
 <label>
-Nom complet <span class="required">*</span>
+Nom complet *
 </label>
 
 <input
-id="customerName"
+id="name"
 type="text"
-placeholder="Ex : Mohamed Amine"
+placeholder="Votre nom complet"
 required>
 
 </div>
 
 
-<div class="form-group">
+<div class="field">
 
 <label>
-Téléphone <span class="required">*</span>
+Téléphone *
 </label>
 
 <input
-id="customerPhone"
+id="phone"
 type="tel"
-placeholder="Ex : 0600000000"
+placeholder="Votre numéro de téléphone"
 required>
 
 </div>
 
 
-<div class="form-group">
+<div class="field">
 
 <label>
-Adresse complète <span class="required">*</span>
+VOTRE ADRESSE COMPLETE *
 </label>
 
 <textarea
-id="customerAddress"
-placeholder="Ex : Rue..., quartier..."
+id="address"
+placeholder="Votre adresse complète"
 required></textarea>
 
 </div>
 
 
-<div class="form-group">
+<div class="field">
 
 <label>
-Ville <span class="required">*</span>
+Ville *
 </label>
 
 <input
-id="customerCity"
+id="city"
 type="text"
-placeholder="Ex : Casablanca"
+placeholder="Votre ville"
 required>
 
 </div>
 
 
-<div class="order-summary">
+<div class="summary">
 
-<div class="order-summary-title">
-Résumé de votre commande
+<div class="summary-title">
+Votre commande
 </div>
 
-<div id="checkoutSummary"></div>
+<div id="summaryItems"></div>
 
 <div class="summary-total">
 
 <span>Total</span>
 
-<span id="checkoutTotal">
+<span id="summaryTotal">
 0 DH
 </span>
 
@@ -1313,8 +1272,8 @@ Résumé de votre commande
 
 
 <button
-type="submit"
-class="confirm-btn">
+class="confirm"
+type="submit">
 
 📲 Confirmer la commande sur WhatsApp
 
@@ -1322,8 +1281,8 @@ class="confirm-btn">
 
 
 <button
+class="cancel"
 type="button"
-class="cancel-btn"
 onclick="closeCheckout()">
 
 Annuler
@@ -1337,18 +1296,19 @@ Annuler
 </div>
 
 
-<!-- PRODUCT MODAL -->
+<!-- DETAILS PRODUIT -->
 
 <div
-class="modal"
-id="productModal"
-onclick="closeProductModal(event)">
+class="product-overlay"
+id="productOverlay"
+onclick="closeProductOutside(event)">
 
-<div class="modal-box">
+<div class="product-modal">
 
 <button
-class="modal-close"
-onclick="closeProductModal()">
+class="close"
+onclick="closeProductModal()"
+style="position:absolute;right:15px;top:15px;">
 ×
 </button>
 
@@ -1403,7 +1363,7 @@ category:"Hoodies",
 gender:"hommes",
 price:299,
 img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85",
-desc:"Hoodie confortable au style clean, parfait pour un look casual."
+desc:"Hoodie confortable au style clean."
 },
 
 {
@@ -1423,7 +1383,7 @@ category:"Pantalons",
 gender:"hommes",
 price:279,
 img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85",
-desc:"Pantalon cargo confortable avec une coupe décontractée."
+desc:"Pantalon cargo confortable."
 },
 
 {
@@ -1433,7 +1393,7 @@ category:"Pantalons",
 gender:"hommes",
 price:249,
 img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85",
-desc:"Pantalon noir polyvalent pour un style propre et élégant."
+desc:"Pantalon noir polyvalent."
 },
 
 {
@@ -1453,7 +1413,7 @@ category:"Vestes",
 gender:"hommes",
 price:399,
 img:"https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=85",
-desc:"Veste denim intemporelle à porter avec toutes tes pièces."
+desc:"Veste denim intemporelle."
 },
 
 {
@@ -1473,7 +1433,7 @@ category:"T-shirts",
 gender:"femmes",
 price:129,
 img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85",
-desc:"T-shirt basique pour femme, simple et confortable."
+desc:"T-shirt basique pour femme."
 },
 
 {
@@ -1489,25 +1449,23 @@ desc:"Hoodie oversized confortable pour femme."
 ];
 
 
-let currentGender="all";
-let currentCategory="all";
 let cart=[];
+let genderFilter="all";
+let categoryFilter="all";
 
 
-/* =========================
-   AFFICHER PRODUITS
-========================= */
+/* AFFICHAGE */
 
 function displayProducts(){
 
 let list=[...products];
 
-if(currentGender!=="all"){
-list=list.filter(p=>p.gender===currentGender);
+if(genderFilter!=="all"){
+list=list.filter(p=>p.gender===genderFilter);
 }
 
-if(currentCategory!=="all"){
-list=list.filter(p=>p.category===currentCategory);
+if(categoryFilter!=="all"){
+list=list.filter(p=>p.category===categoryFilter);
 }
 
 const search=document
@@ -1530,7 +1488,7 @@ const grid=document.getElementById("productGrid");
 if(!list.length){
 
 grid.innerHTML=`
-<div style="grid-column:1/-1;text-align:center;color:#777;padding:40px">
+<div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
 Aucun produit trouvé.
 </div>
 `;
@@ -1545,9 +1503,7 @@ grid.innerHTML=list.map(p=>`
 
 <div class="product-img">
 
-${p.id<=3
-?'<span class="badge">NOUVEAU</span>'
-:""}
+${p.id<=3?'<span class="badge">NOUVEAU</span>':''}
 
 <span class="gender-badge">
 ${p.gender==="hommes"?"HOMMES":"FEMMES"}
@@ -1572,34 +1528,22 @@ ${p.category}
 ${p.price} DH
 </div>
 
-<div class="quantity-box">
-
-<button onclick="changeProductQuantity(${p.id},-1)">
-−
-</button>
-
-<span id="qty-${p.id}">
-1
-</span>
-
-<button onclick="changeProductQuantity(${p.id},1)">
-+
-</button>
-
-</div>
-
 <div class="product-actions">
 
 <button
 class="add-btn"
 onclick="addToCart(${p.id})">
+
 Ajouter
+
 </button>
 
 <button
 class="details"
 onclick="openProductModal(${p.id})">
+
 ↗
+
 </button>
 
 </div>
@@ -1613,32 +1557,7 @@ onclick="openProductModal(${p.id})">
 }
 
 
-/* =========================
-   QUANTITÉ PRODUIT
-========================= */
-
-function changeProductQuantity(id,change){
-
-const element=document.getElementById("qty-"+id);
-
-if(!element)return;
-
-let quantity=parseInt(element.textContent)||1;
-
-quantity+=change;
-
-if(quantity<1)quantity=1;
-
-if(quantity>99)quantity=99;
-
-element.textContent=quantity;
-
-}
-
-
-/* =========================
-   AJOUTER AU PANIER
-========================= */
+/* AJOUT */
 
 function addToCart(id){
 
@@ -1646,21 +1565,17 @@ const product=products.find(p=>p.id===id);
 
 if(!product)return;
 
-const quantityElement=document.getElementById("qty-"+id);
-
-const quantity=parseInt(quantityElement.textContent)||1;
-
 const existing=cart.find(item=>item.id===id);
 
 if(existing){
 
-existing.quantity+=quantity;
+existing.quantity++;
 
 }else{
 
 cart.push({
 id:id,
-quantity:quantity
+quantity:1
 });
 
 }
@@ -1670,74 +1585,58 @@ updateCart();
 }
 
 
-/* =========================
-   PANIER
-========================= */
+/* PANIER */
 
 function updateCart(){
 
-const cartItems=document.getElementById("cartItems");
+const container=document.getElementById("cartItems");
 
-const cartCount=document.getElementById("cartCount");
-
-const cartFooter=document.getElementById("cartFooter");
-
+let total=0;
 let count=0;
-
-cart.forEach(item=>{
-count+=item.quantity;
-});
-
-cartCount.textContent=count;
 
 if(cart.length===0){
 
-cartItems.innerHTML=`
-<div class="cart-empty">
+container.innerHTML=`
+<div class="empty">
 🛒<br><br>
 Votre panier est vide.
 </div>
 `;
 
-cartFooter.style.display="none";
+document.getElementById("cartBottom").style.display="none";
 
-return;
+}else{
 
-}
+document.getElementById("cartBottom").style.display="block";
 
-cartFooter.style.display="block";
+container.innerHTML=cart.map(item=>{
 
-let total=0;
+const p=products.find(x=>x.id===item.id);
 
-cartItems.innerHTML=cart.map(item=>{
-
-const product=products.find(p=>p.id===item.id);
-
-const subtotal=product.price*item.quantity;
+const subtotal=p.price*item.quantity;
 
 total+=subtotal;
+count+=item.quantity;
 
 return`
 
 <div class="cart-item">
 
 <img
-src="${product.img}"
-alt="${product.name}">
+src="${p.img}"
+alt="${p.name}">
 
-<div class="cart-item-info">
+<div class="cart-info">
 
-<h3>
-${product.name}
-</h3>
+<h3>${p.name}</h3>
 
-<div class="cart-item-price">
-${product.price} DH × ${item.quantity}
+<div class="cart-price">
+${p.price} DH × ${item.quantity}
 </div>
 
-<div class="cart-quantity">
+<div class="cart-qty">
 
-<button onclick="changeCartQuantity(${product.id},-1)">
+<button onclick="changeQuantity(${p.id},-1)">
 −
 </button>
 
@@ -1745,13 +1644,13 @@ ${product.price} DH × ${item.quantity}
 ${item.quantity}
 </span>
 
-<button onclick="changeCartQuantity(${product.id},1)">
+<button onclick="changeQuantity(${p.id},1)">
 +
 </button>
 
 <button
-class="remove-btn"
-onclick="removeFromCart(${product.id})">
+class="remove"
+onclick="removeItem(${p.id})">
 ×
 </button>
 
@@ -1769,14 +1668,18 @@ ${subtotal} DH
 
 }).join("");
 
+}
+
 document.getElementById("cartTotal").textContent=total+" DH";
+
+document.getElementById("cartCount").textContent=count;
 
 }
 
 
-function changeCartQuantity(id,change){
+function changeQuantity(id,change){
 
-const item=cart.find(p=>p.id===id);
+const item=cart.find(x=>x.id===id);
 
 if(!item)return;
 
@@ -1784,7 +1687,7 @@ item.quantity+=change;
 
 if(item.quantity<=0){
 
-cart=cart.filter(p=>p.id!==id);
+cart=cart.filter(x=>x.id!==id);
 
 }
 
@@ -1793,18 +1696,20 @@ updateCart();
 }
 
 
-function removeFromCart(id){
+function removeItem(id){
 
-cart=cart.filter(p=>p.id!==id);
+cart=cart.filter(x=>x.id!==id);
 
 updateCart();
 
 }
 
+
+/* OUVRIR PANIER */
 
 function openCart(){
 
-document.getElementById("cartModal").classList.add("show");
+document.getElementById("cartOverlay").classList.add("show");
 
 updateCart();
 
@@ -1813,23 +1718,23 @@ updateCart();
 
 function closeCart(){
 
-document.getElementById("cartModal").classList.remove("show");
+document.getElementById("cartOverlay").classList.remove("show");
 
 }
 
 
 function closeCartOutside(event){
 
-if(event.target.id==="cartModal"){
+if(event.target.id==="cartOverlay"){
+
 closeCart();
-}
 
 }
 
+}
 
-/* =========================
-   CHECKOUT
-========================= */
+
+/* CHECKOUT */
 
 function openCheckout(){
 
@@ -1841,33 +1746,33 @@ return;
 
 }
 
-buildCheckoutSummary();
+buildSummary();
 
 closeCart();
 
-document.getElementById("checkoutModal").classList.add("show");
+document.getElementById("checkoutOverlay").classList.add("show");
 
 }
 
 
 function closeCheckout(){
 
-document.getElementById("checkoutModal").classList.remove("show");
+document.getElementById("checkoutOverlay").classList.remove("show");
 
 }
 
 
-function buildCheckoutSummary(){
+function buildSummary(){
 
-const summary=document.getElementById("checkoutSummary");
+const box=document.getElementById("summaryItems");
 
 let total=0;
 
-summary.innerHTML=cart.map(item=>{
+box.innerHTML=cart.map(item=>{
 
-const product=products.find(p=>p.id===item.id);
+const p=products.find(x=>x.id===item.id);
 
-const subtotal=product.price*item.quantity;
+const subtotal=p.price*item.quantity;
 
 total+=subtotal;
 
@@ -1876,7 +1781,7 @@ return`
 <div class="summary-line">
 
 <span>
-${product.name} × ${item.quantity}
+${p.name} × ${item.quantity}
 </span>
 
 <strong>
@@ -1889,28 +1794,29 @@ ${subtotal} DH
 
 }).join("");
 
-document.getElementById("checkoutTotal").textContent=total+" DH";
+document.getElementById("summaryTotal").textContent=total+" DH";
 
 }
 
 
 /* =========================
-   CONFIRMATION WHATSAPP
+   FORM + WHATSAPP
 ========================= */
 
-function confirmOrder(event){
+function submitOrder(event){
 
 event.preventDefault();
 
-const name=document.getElementById("customerName").value.trim();
+const name=document.getElementById("name").value.trim();
 
-const phone=document.getElementById("customerPhone").value.trim();
+const phone=document.getElementById("phone").value.trim();
 
-const address=document.getElementById("customerAddress").value.trim();
+const address=document.getElementById("address").value.trim();
 
-const city=document.getElementById("customerCity").value.trim();
+const city=document.getElementById("city").value.trim();
 
 const error=document.getElementById("formError");
+
 
 if(!name || !phone || !address || !city){
 
@@ -1923,59 +1829,57 @@ return;
 error.style.display="none";
 
 
-let message=
-"Bonjour O2WEAR 👋\n\n"+
-"🛍️ Nouvelle commande\n\n"+
-"👤 Nom : "+name+"\n"+
-"📞 Téléphone : "+phone+"\n"+
-"📍 Adresse : "+address+"\n"+
-"🏙️ Ville : "+city+"\n\n"+
-"📦 PRODUITS :\n";
-
-
 let total=0;
+
+let productsMessage="";
+
 
 cart.forEach(item=>{
 
-const product=products.find(p=>p.id===item.id);
+const p=products.find(x=>x.id===item.id);
 
-const subtotal=product.price*item.quantity;
+const subtotal=p.price*item.quantity;
 
 total+=subtotal;
 
-message+=
-"• "+product.name+
-" × "+item.quantity+
-" = "+subtotal+" DH\n";
+productsMessage+=
+"• "+p.name+
+" | Quantité: "+item.quantity+
+" | Prix: "+subtotal+" DH\n";
 
 });
 
 
-message+=
-"\n💰 TOTAL : "+total+" DH\n\n"+
-"Merci pour votre commande ❤️";
+const message=
+"Bonjour O2WEAR 👋\n\n"+
+"🛍️ NOUVELLE COMMANDE\n\n"+
+"👤 Nom complet: "+name+"\n"+
+"📞 Téléphone: "+phone+"\n"+
+"📍 Adresse: "+address+"\n"+
+"🏙️ Ville: "+city+"\n\n"+
+"📦 COMMANDE:\n"+
+productsMessage+
+"\n💰 TOTAL: "+total+" DH\n\n"+
+"Merci pour votre commande.";
 
 
-const whatsapp=
+const whatsappURL=
 "https://wa.me/212603701100?text="+
 encodeURIComponent(message);
 
-window.open(whatsapp,"_blank");
+
+/* فتح WhatsApp فقط من بعد تعمير الفورم */
+
+window.open(whatsappURL,"_blank");
 
 }
 
 
-/* =========================
-   FILTRES
-========================= */
+/* FILTER GENDER */
 
-function setGender(gender,button){
+function filterGender(value,button){
 
-currentGender=gender;
-
-document.querySelectorAll(
-".filters:first-of-type .filter"
-);
+genderFilter=value;
 
 const buttons=button.parentElement.querySelectorAll(".filter");
 
@@ -1988,9 +1892,11 @@ displayProducts();
 }
 
 
-function setCategory(category,button){
+/* FILTER CATEGORY */
 
-currentCategory=category;
+function filterCategory(value,button){
+
+categoryFilter=value;
 
 const buttons=button.parentElement.querySelectorAll(".filter");
 
@@ -2003,21 +1909,18 @@ displayProducts();
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 function toggleSearch(){
 
 const box=document.getElementById("searchBox");
 
+box.style.display=
+box.style.display==="block"
+?"none"
+:"block";
+
 if(box.style.display==="block"){
-
-box.style.display="none";
-
-}else{
-
-box.style.display="block";
 
 document.getElementById("searchInput").focus();
 
@@ -2026,41 +1929,39 @@ document.getElementById("searchInput").focus();
 }
 
 
-/* =========================
-   PRODUCT DETAILS
-========================= */
+/* PRODUCT DETAILS */
 
 function openProductModal(id){
 
-const product=products.find(p=>p.id===id);
+const p=products.find(x=>x.id===id);
 
-if(!product)return;
+if(!p)return;
 
-document.getElementById("modalImg").src=product.img;
+document.getElementById("modalImg").src=p.img;
 
-document.getElementById("modalImg").alt=product.name;
+document.getElementById("modalImg").alt=p.name;
 
-document.getElementById("modalName").textContent=product.name;
+document.getElementById("modalName").textContent=p.name;
 
-document.getElementById("modalPrice").textContent=product.price+" DH";
+document.getElementById("modalPrice").textContent=p.price+" DH";
 
-document.getElementById("modalDesc").textContent=product.desc;
+document.getElementById("modalDesc").textContent=p.desc;
 
-document.getElementById("productModal").classList.add("show");
+document.getElementById("productOverlay").classList.add("show");
 
 }
 
 
 function closeProductModal(){
 
-document.getElementById("productModal").classList.remove("show");
+document.getElementById("productOverlay").classList.remove("show");
 
 }
 
 
-function closeProductModalOutside(event){
+function closeProductOutside(event){
 
-if(event.target.id==="productModal"){
+if(event.target.id==="productOverlay"){
 
 closeProductModal();
 
@@ -2069,13 +1970,12 @@ closeProductModal();
 }
 
 
-/* INITIALISATION */
+/* START */
 
 displayProducts();
-
 updateCart();
 
 </script>
 
 </body>
-</html>
+</html>a
