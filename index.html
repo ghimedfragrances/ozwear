@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="description" content="O2WEAR - Boutique de vêtements tendance">
 <title>O2WEAR — Fashion Store</title>
 
 <style>
+
 :root{
   --bg:#f7f7f5;
   --card:#fff;
@@ -16,9 +19,15 @@
   --green:#25D366;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Arial,Helvetica,sans-serif;
@@ -27,10 +36,18 @@ body{
   line-height:1.5;
 }
 
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-/* TOP */
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+/* TOPBAR */
+
 .topbar{
   background:#111;
   color:#fff;
@@ -41,6 +58,7 @@ button{font:inherit;cursor:pointer}
 }
 
 /* HEADER */
+
 header{
   position:sticky;
   top:0;
@@ -67,7 +85,9 @@ nav{
   letter-spacing:2px;
 }
 
-.logo span{font-weight:400}
+.logo span{
+  font-weight:400;
+}
 
 .navlinks{
   display:flex;
@@ -75,7 +95,9 @@ nav{
   font-size:14px;
 }
 
-.navlinks a:hover{text-decoration:underline}
+.navlinks a:hover{
+  text-decoration:underline;
+}
 
 .nav-actions{
   display:flex;
@@ -100,6 +122,7 @@ nav{
   right:-5px;
   min-width:19px;
   height:19px;
+  padding:0 5px;
   border-radius:50%;
   background:#111;
   color:#fff;
@@ -110,6 +133,7 @@ nav{
 }
 
 /* SEARCH */
+
 .search-box{
   display:none;
   padding:0 22px 14px;
@@ -126,6 +150,7 @@ nav{
 }
 
 /* HERO */
+
 .hero{
   max-width:1200px;
   margin:22px auto 0;
@@ -139,6 +164,7 @@ nav{
   position:relative;
   display:flex;
   align-items:flex-end;
+
   background:
     linear-gradient(90deg,rgba(0,0,0,.67),rgba(0,0,0,.12)),
     url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85")
@@ -185,6 +211,7 @@ h1{
 }
 
 /* SECTIONS */
+
 .section{
   max-width:1200px;
   margin:75px auto 0;
@@ -200,6 +227,7 @@ h1{
 
 .section h2{
   font-size:32px;
+  letter-spacing:-1px;
 }
 
 .section-head p{
@@ -208,6 +236,7 @@ h1{
 }
 
 /* FILTERS */
+
 .filter-title{
   font-size:12px;
   font-weight:800;
@@ -220,7 +249,7 @@ h1{
   gap:9px;
   overflow:auto;
   padding-bottom:5px;
-  margin-bottom:22px;
+  margin-bottom:24px;
 }
 
 .filter{
@@ -232,13 +261,15 @@ h1{
   font-size:13px;
 }
 
-.filter.active{
+.filter.active,
+.filter:hover{
   background:#111;
   color:#fff;
   border-color:#111;
 }
 
 /* PRODUCTS */
+
 .products{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -246,7 +277,7 @@ h1{
 }
 
 .product{
-  background:#fff;
+  background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
   overflow:hidden;
@@ -341,15 +372,18 @@ h1{
 }
 
 /* BANNER */
+
 .banner{
   margin-top:75px;
   min-height:310px;
   border-radius:22px;
   overflow:hidden;
+
   background:
     linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.1)),
     url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=85")
     center/cover;
+
   display:flex;
   align-items:center;
   padding:45px;
@@ -369,6 +403,7 @@ h1{
 }
 
 /* FEATURES */
+
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -399,6 +434,7 @@ h1{
 }
 
 /* FOOTER */
+
 footer{
   background:#111;
   color:#fff;
@@ -436,6 +472,7 @@ footer p{
 }
 
 /* WHATSAPP */
+
 .wa{
   position:fixed;
   right:20px;
@@ -452,7 +489,8 @@ footer p{
   z-index:100;
 }
 
-/* CART */
+/* GENERAL OVERLAY */
+
 .overlay{
   position:fixed;
   inset:0;
@@ -464,6 +502,8 @@ footer p{
 .overlay.show{
   display:block;
 }
+
+/* CART */
 
 .cart-panel{
   position:absolute;
@@ -576,7 +616,123 @@ footer p{
   font-weight:800;
 }
 
+/* QUANTITY MODAL */
+
+.quantity-overlay{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:450;
+}
+
+.quantity-overlay.show{
+  display:flex;
+}
+
+.quantity-box{
+  background:#fff;
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+  padding:25px;
+  position:relative;
+}
+
+.quantity-box h2{
+  font-size:24px;
+  margin-bottom:5px;
+}
+
+.quantity-product{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  margin:20px 0;
+  padding:12px;
+  background:#f7f7f5;
+  border-radius:12px;
+}
+
+.quantity-product img{
+  width:80px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.quantity-product-info{
+  flex:1;
+}
+
+.quantity-product-info h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.quantity-product-info p{
+  font-size:14px;
+  font-weight:800;
+}
+
+.quantity-label{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+  margin-bottom:10px;
+}
+
+.quantity-selector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  margin:15px 0 22px;
+}
+
+.quantity-selector button{
+  width:44px;
+  height:44px;
+  border:0;
+  background:#111;
+  color:#fff;
+  border-radius:10px;
+  font-size:22px;
+}
+
+.quantity-number{
+  font-size:25px;
+  font-weight:800;
+  min-width:35px;
+  text-align:center;
+}
+
+.add-to-cart-confirm{
+  width:100%;
+  border:0;
+  background:#111;
+  color:#fff;
+  padding:14px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.quantity-cancel{
+  width:100%;
+  border:0;
+  background:#eee;
+  color:#111;
+  padding:12px;
+  border-radius:10px;
+  margin-top:8px;
+  font-weight:700;
+}
+
 /* CHECKOUT */
+
 .checkout-overlay{
   position:fixed;
   inset:0;
@@ -585,7 +741,7 @@ footer p{
   align-items:center;
   justify-content:center;
   padding:18px;
-  z-index:400;
+  z-index:500;
 }
 
 .checkout-overlay.show{
@@ -702,7 +858,8 @@ footer p{
   margin-bottom:15px;
 }
 
-/* PRODUCT MODAL */
+/* PRODUCT DETAILS */
+
 .product-overlay{
   position:fixed;
   inset:0;
@@ -711,7 +868,7 @@ footer p{
   align-items:center;
   justify-content:center;
   padding:20px;
-  z-index:500;
+  z-index:600;
 }
 
 .product-overlay.show{
@@ -750,100 +907,109 @@ footer p{
 }
 
 /* MOBILE */
+
 @media(max-width:900px){
 
-.products{
-  grid-template-columns:repeat(2,1fr);
-}
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-.navlinks{
-  display:none;
-}
+  .navlinks{
+    display:none;
+  }
 
-.product-img{
-  height:300px;
-}
+  .product-img{
+    height:300px;
+  }
 
 }
 
 @media(max-width:600px){
 
-nav{
-  height:64px;
+  nav{
+    height:64px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .hero-box{
+    min-height:470px;
+  }
+
+  .hero-content{
+    padding:28px;
+  }
+
+  .hero-content p{
+    font-size:15px;
+  }
+
+  .section{
+    margin-top:55px;
+  }
+
+  .section h2{
+    font-size:26px;
+  }
+
+  .products{
+    gap:10px;
+  }
+
+  .product-img{
+    height:245px;
+  }
+
+  .product-info{
+    padding:11px;
+  }
+
+  .banner{
+    padding:28px;
+    min-height:330px;
+  }
+
+  .banner h2{
+    font-size:34px;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+    margin-top:55px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+  }
+
+  .footer-links{
+    flex-wrap:wrap;
+  }
+
+  .wa{
+    right:15px;
+    bottom:15px;
+  }
+
 }
 
-.logo{
-  font-size:22px;
-}
-
-.hero-box{
-  min-height:470px;
-}
-
-.hero-content{
-  padding:28px;
-}
-
-.hero-content p{
-  font-size:15px;
-}
-
-.section{
-  margin-top:55px;
-}
-
-.section h2{
-  font-size:26px;
-}
-
-.products{
-  gap:10px;
-}
-
-.product-img{
-  height:245px;
-}
-
-.product-info{
-  padding:11px;
-}
-
-.banner{
-  padding:28px;
-  min-height:330px;
-}
-
-.banner h2{
-  font-size:34px;
-}
-
-.features{
-  grid-template-columns:1fr;
-  margin-top:55px;
-}
-
-.footer-inner{
-  flex-direction:column;
-}
-
-.footer-links{
-  flex-wrap:wrap;
-}
-
-.wa{
-  right:15px;
-  bottom:15px;
-}
-
-}
 </style>
 </head>
 
+
 <body>
+
+
+<!-- TOPBAR -->
 
 <div class="topbar">
 LIVRAISON PARTOUT AU MAROC • O2WEAR
 </div>
+
+
+<!-- HEADER -->
 
 <header>
 
@@ -854,27 +1020,45 @@ O2<span>WEAR</span>
 </a>
 
 <div class="navlinks">
+
 <a href="#shop">SHOP</a>
 <a href="#new">NOUVEAUTÉS</a>
 <a href="#about">À PROPOS</a>
+
 </div>
 
 <div class="nav-actions">
 
-<button class="icon-btn" onclick="toggleSearch()">
+<button
+class="icon-btn"
+onclick="toggleSearch()"
+aria-label="Recherche">
 ⌕
 </button>
 
-<button class="icon-btn" onclick="openCart()">
+<button
+class="icon-btn"
+onclick="openCart()"
+aria-label="Panier">
+
 🛒
-<span class="cart-count" id="cartCount">0</span>
+
+<span
+class="cart-count"
+id="cartCount">
+0
+</span>
+
 </button>
 
 </div>
 
 </nav>
 
-<div class="search-box" id="searchBox">
+
+<div
+class="search-box"
+id="searchBox">
 
 <input
 id="searchInput"
@@ -887,7 +1071,12 @@ oninput="displayProducts()">
 </header>
 
 
+<!-- MAIN -->
+
 <main>
+
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -907,8 +1096,12 @@ WEAR YOUR<br>OWN STYLE.
 Des pièces modernes, simples et tendance pensées pour ton quotidien.
 </p>
 
-<a href="#shop" class="btn">
+<a
+href="#shop"
+class="btn">
+
 Découvrir la collection →
+
 </a>
 
 </div>
@@ -918,17 +1111,30 @@ Découvrir la collection →
 </section>
 
 
-<section class="section" id="shop">
+<!-- SHOP -->
+
+<section
+class="section"
+id="shop">
 
 <div class="section-head">
 
 <div>
-<h2>Shop</h2>
-<p>Nos pièces du moment</p>
-</div>
+
+<h2>
+Shop
+</h2>
+
+<p>
+Nos pièces du moment
+</p>
 
 </div>
 
+</div>
+
+
+<!-- HOMMES / FEMMES -->
 
 <div class="filter-title">
 POUR QUI ?
@@ -939,23 +1145,31 @@ POUR QUI ?
 <button
 class="filter active"
 onclick="filterGender('all',this)">
+
 Tout
+
 </button>
 
 <button
 class="filter"
 onclick="filterGender('hommes',this)">
-Pour Hommes
+
+👨 Pour Hommes
+
 </button>
 
 <button
 class="filter"
 onclick="filterGender('femmes',this)">
-Pour Femmes
+
+👩 Pour Femmes
+
 </button>
 
 </div>
 
+
+<!-- CATEGORIES -->
 
 <div class="filter-title">
 CATÉGORIES
@@ -966,42 +1180,59 @@ CATÉGORIES
 <button
 class="filter active"
 onclick="filterCategory('all',this)">
+
 Toutes
+
 </button>
 
 <button
 class="filter"
 onclick="filterCategory('T-shirts',this)">
+
 T-shirts
+
 </button>
 
 <button
 class="filter"
 onclick="filterCategory('Hoodies',this)">
+
 Hoodies
+
 </button>
 
 <button
 class="filter"
 onclick="filterCategory('Pantalons',this)">
+
 Pantalons
+
 </button>
 
 <button
 class="filter"
 onclick="filterCategory('Vestes',this)">
+
 Vestes
+
 </button>
 
 </div>
 
 
-<div class="products" id="productGrid"></div>
+<div
+class="products"
+id="productGrid">
+</div>
 
 </section>
 
 
-<section class="section" id="new">
+<!-- BANNER -->
+
+<section
+class="section"
+id="new">
 
 <div class="banner">
 
@@ -1012,15 +1243,21 @@ O2WEAR ESSENTIALS
 </div>
 
 <h2>
-Simple.<br>Clean.<br>O2WEAR.
+Simple.<br>
+Clean.<br>
+O2WEAR.
 </h2>
 
 <p>
 Une sélection de vêtements faciles à porter et à associer.
 </p>
 
-<a href="#shop" class="btn">
+<a
+href="#shop"
+class="btn">
+
 Voir les produits
+
 </a>
 
 </div>
@@ -1030,26 +1267,62 @@ Voir les produits
 </section>
 
 
-<section class="section" id="about">
+<!-- FEATURES -->
+
+<section
+class="section"
+id="about">
 
 <div class="features">
 
 <div class="feature">
-<div class="emoji">🚚</div>
-<h3>Livraison au Maroc</h3>
-<p>Nous préparons soigneusement chaque commande.</p>
+
+<div class="emoji">
+🚚
 </div>
 
-<div class="feature">
-<div class="emoji">💬</div>
-<h3>Commande WhatsApp</h3>
-<p>Remplissez vos informations directement sur le site.</p>
+<h3>
+Livraison au Maroc
+</h3>
+
+<p>
+Nous préparons soigneusement chaque commande.
+</p>
+
 </div>
 
+
 <div class="feature">
-<div class="emoji">✨</div>
-<h3>Style O2WEAR</h3>
-<p>Des essentiels modernes pour construire ton style.</p>
+
+<div class="emoji">
+💬
+</div>
+
+<h3>
+Commande WhatsApp
+</h3>
+
+<p>
+Remplissez vos informations directement sur le site.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="emoji">
+✨
+</div>
+
+<h3>
+Style O2WEAR
+</h3>
+
+<p>
+Des essentiels modernes pour construire ton style.
+</p>
+
 </div>
 
 </div>
@@ -1058,6 +1331,8 @@ Voir les produits
 
 </main>
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -1075,36 +1350,163 @@ Fashion brand moderne. Découvre nos pièces et commande directement via WhatsAp
 
 </div>
 
+
 <div class="footer-links">
 
-<a href="#shop">Shop</a>
-<a href="#new">Nouveautés</a>
-<a href="#about">À propos</a>
+<a href="#shop">
+Shop
+</a>
 
-<a href="https://wa.me/212603701100" target="_blank">
+<a href="#new">
+Nouveautés
+</a>
+
+<a href="#about">
+À propos
+</a>
+
+<a
+href="https://wa.me/212603701100"
+target="_blank">
+
 WhatsApp
+
 </a>
 
 </div>
 
 </div>
 
+
 <div class="copyright">
+
 © 2026 O2WEAR. Tous droits réservés.
+
 </div>
 
 </footer>
 
 
+<!-- FLOATING WHATSAPP -->
+
 <a
 class="wa"
 href="https://wa.me/212603701100"
-target="_blank">
+target="_blank"
+aria-label="WhatsApp">
+
 ◉
+
 </a>
 
 
-<!-- PANIER -->
+<!-- ==================================================
+     QUANTITY MODAL
+================================================== -->
+
+<div
+class="quantity-overlay"
+id="quantityOverlay">
+
+<div class="quantity-box">
+
+<button
+class="close"
+onclick="closeQuantityModal()"
+style="position:absolute;right:15px;top:15px;">
+
+×
+
+</button>
+
+
+<h2>
+Choisir la quantité
+</h2>
+
+
+<div
+class="quantity-product">
+
+<img
+id="quantityImg"
+src=""
+alt="">
+
+<div class="quantity-product-info">
+
+<h3
+id="quantityName">
+</h3>
+
+<p
+id="quantityPrice">
+</p>
+
+</div>
+
+</div>
+
+
+<div class="quantity-label">
+Quelle quantité souhaitez-vous ?
+</div>
+
+
+<div class="quantity-selector">
+
+<button
+onclick="changeSelectedQuantity(-1)">
+
+−
+
+</button>
+
+
+<div
+class="quantity-number"
+id="selectedQuantity">
+
+1
+
+</div>
+
+
+<button
+onclick="changeSelectedQuantity(1)">
+
++
+
+</button>
+
+</div>
+
+
+<button
+class="add-to-cart-confirm"
+onclick="confirmAddToCart()">
+
+Ajouter au panier
+
+</button>
+
+
+<button
+class="quantity-cancel"
+onclick="closeQuantityModal()">
+
+Annuler
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ==================================================
+     CART
+================================================== -->
 
 <div
 class="overlay"
@@ -1113,19 +1515,28 @@ onclick="closeCartOutside(event)">
 
 <div class="cart-panel">
 
+
 <div class="cart-header">
 
-<h2>Votre panier</h2>
+<h2>
+Votre panier
+</h2>
 
 <button
 class="close"
 onclick="closeCart()">
+
 ×
+
 </button>
 
 </div>
 
-<div id="cartItems"></div>
+
+<div
+id="cartItems">
+</div>
+
 
 <div
 class="cart-bottom"
@@ -1133,30 +1544,39 @@ id="cartBottom">
 
 <div class="total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
-<span id="cartTotal">
+<span
+id="cartTotal">
+
 0 DH
+
 </span>
 
 </div>
+
 
 <button
 class="checkout"
 onclick="openCheckout()">
 
-Commander via WhatsApp
+Commander
 
 </button>
 
 </div>
 
-</div>
 
 </div>
 
+</div>
 
-<!-- FORMULAIRE -->
+
+<!-- ==================================================
+     CHECKOUT FORM
+================================================== -->
 
 <div
 class="checkout-overlay"
@@ -1164,19 +1584,24 @@ id="checkoutOverlay">
 
 <div class="checkout-box">
 
+
 <button
 class="close"
 onclick="closeCheckout()"
 style="position:absolute;right:15px;top:15px;">
+
 ×
+
 </button>
+
 
 <h2>
 Finaliser votre commande
 </h2>
 
+
 <p class="subtitle">
-Veuillez remplir vos informations pour recevoir votre commande.
+Veuillez remplir vos informations avant de confirmer votre commande.
 </p>
 
 
@@ -1189,7 +1614,9 @@ Veuillez remplir tous les champs obligatoires.
 </div>
 
 
-<form onsubmit="submitOrder(event)">
+<form
+onsubmit="submitOrder(event)">
+
 
 <div class="field">
 
@@ -1224,7 +1651,7 @@ required>
 <div class="field">
 
 <label>
-VOTRE ADRESSE COMPLETE *
+Adresse complète *
 </label>
 
 <textarea
@@ -1256,14 +1683,23 @@ required>
 Votre commande
 </div>
 
-<div id="summaryItems"></div>
+
+<div
+id="summaryItems">
+</div>
+
 
 <div class="summary-total">
 
-<span>Total</span>
+<span>
+Total
+</span>
 
-<span id="summaryTotal">
+<span
+id="summaryTotal">
+
 0 DH
+
 </span>
 
 </div>
@@ -1289,6 +1725,7 @@ Annuler
 
 </button>
 
+
 </form>
 
 </div>
@@ -1296,7 +1733,9 @@ Annuler
 </div>
 
 
-<!-- DETAILS PRODUIT -->
+<!-- ==================================================
+     PRODUCT DETAILS
+================================================== -->
 
 <div
 class="product-overlay"
@@ -1305,23 +1744,38 @@ onclick="closeProductOutside(event)">
 
 <div class="product-modal">
 
+
 <button
 class="close"
 onclick="closeProductModal()"
 style="position:absolute;right:15px;top:15px;">
+
 ×
+
 </button>
 
-<img id="modalImg" src="" alt="">
 
-<h2 id="modalName"></h2>
+<img
+id="modalImg"
+src=""
+alt="">
+
+
+<h2
+id="modalName">
+</h2>
+
 
 <div
 class="modal-price"
 id="modalPrice">
 </div>
 
-<p id="modalDesc"></p>
+
+<p
+id="modalDesc">
+</p>
+
 
 </div>
 
@@ -1330,11 +1784,12 @@ id="modalPrice">
 
 <script>
 
-/* =========================
-   PRODUITS
-========================= */
 
-const products=[
+/* ==================================================
+   PRODUCTS
+================================================== */
+
+const products = [
 
 {
 id:1,
@@ -1383,7 +1838,7 @@ category:"Pantalons",
 gender:"hommes",
 price:279,
 img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85",
-desc:"Pantalon cargo confortable."
+desc:"Pantalon cargo confortable avec une coupe décontractée."
 },
 
 {
@@ -1449,533 +1904,951 @@ desc:"Hoodie oversized confortable pour femme."
 ];
 
 
-let cart=[];
-let genderFilter="all";
-let categoryFilter="all";
+/* ==================================================
+   VARIABLES
+================================================== */
+
+let cart = [];
+
+let genderFilter = "all";
+
+let categoryFilter = "all";
+
+let selectedProductId = null;
+
+let selectedQuantity = 1;
 
 
-/* AFFICHAGE */
+/* ==================================================
+   DISPLAY PRODUCTS
+================================================== */
 
 function displayProducts(){
 
-let list=[...products];
+  let list = [...products];
 
-if(genderFilter!=="all"){
-list=list.filter(p=>p.gender===genderFilter);
+
+  if(genderFilter !== "all"){
+
+    list = list.filter(
+      p => p.gender === genderFilter
+    );
+
+  }
+
+
+  if(categoryFilter !== "all"){
+
+    list = list.filter(
+      p => p.category === categoryFilter
+    );
+
+  }
+
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const search =
+    searchInput.value.toLowerCase().trim();
+
+
+  if(search){
+
+    list = list.filter(p =>
+
+      p.name.toLowerCase().includes(search) ||
+
+      p.category.toLowerCase().includes(search)
+
+    );
+
+  }
+
+
+  const grid =
+    document.getElementById("productGrid");
+
+
+  if(!list.length){
+
+    grid.innerHTML = `
+
+      <div
+      style="
+      grid-column:1/-1;
+      text-align:center;
+      padding:50px;
+      color:#777;
+      ">
+
+      Aucun produit trouvé.
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML = list.map(p => `
+
+    <article class="product">
+
+      <div class="product-img">
+
+        ${
+          p.id <= 3
+          ? '<span class="badge">NOUVEAU</span>'
+          : ''
+        }
+
+        <span class="gender-badge">
+
+          ${
+            p.gender === "hommes"
+            ? "HOMMES"
+            : "FEMMES"
+          }
+
+        </span>
+
+
+        <img
+        src="${p.img}"
+        alt="${p.name}"
+        loading="lazy">
+
+      </div>
+
+
+      <div class="product-info">
+
+        <h3>
+          ${p.name}
+        </h3>
+
+
+        <div class="category">
+          ${p.category}
+        </div>
+
+
+        <div class="price">
+          ${p.price} DH
+        </div>
+
+
+        <div class="product-actions">
+
+
+          <button
+          class="add-btn"
+          onclick="openQuantityModal(${p.id})">
+
+          Ajouter
+
+          </button>
+
+
+          <button
+          class="details"
+          onclick="openProductModal(${p.id})">
+
+          ↗
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
 }
 
-if(categoryFilter!=="all"){
-list=list.filter(p=>p.category===categoryFilter);
-}
 
-const search=document
-.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+/* ==================================================
+   QUANTITY MODAL
+================================================== */
 
-if(search){
+function openQuantityModal(id){
 
-list=list.filter(p=>
-p.name.toLowerCase().includes(search) ||
-p.category.toLowerCase().includes(search)
-);
+  const product =
+    products.find(p => p.id === id);
 
-}
+  if(!product) return;
 
-const grid=document.getElementById("productGrid");
 
-if(!list.length){
+  selectedProductId = id;
 
-grid.innerHTML=`
-<div style="grid-column:1/-1;text-align:center;padding:50px;color:#777">
-Aucun produit trouvé.
-</div>
-`;
+  selectedQuantity = 1;
 
-return;
 
-}
+  document.getElementById(
+    "quantityImg"
+  ).src = product.img;
 
-grid.innerHTML=list.map(p=>`
 
-<article class="product">
+  document.getElementById(
+    "quantityImg"
+  ).alt = product.name;
 
-<div class="product-img">
 
-${p.id<=3?'<span class="badge">NOUVEAU</span>':''}
+  document.getElementById(
+    "quantityName"
+  ).textContent = product.name;
 
-<span class="gender-badge">
-${p.gender==="hommes"?"HOMMES":"FEMMES"}
-</span>
 
-<img
-src="${p.img}"
-alt="${p.name}"
-loading="lazy">
+  document.getElementById(
+    "quantityPrice"
+  ).textContent = product.price + " DH";
 
-</div>
 
-<div class="product-info">
+  document.getElementById(
+    "selectedQuantity"
+  ).textContent = selectedQuantity;
 
-<h3>${p.name}</h3>
 
-<div class="category">
-${p.category}
-</div>
-
-<div class="price">
-${p.price} DH
-</div>
-
-<div class="product-actions">
-
-<button
-class="add-btn"
-onclick="addToCart(${p.id})">
-
-Ajouter
-
-</button>
-
-<button
-class="details"
-onclick="openProductModal(${p.id})">
-
-↗
-
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-`).join("");
+  document.getElementById(
+    "quantityOverlay"
+  ).classList.add("show");
 
 }
 
 
-/* AJOUT */
+function changeSelectedQuantity(change){
 
-function addToCart(id){
+  selectedQuantity += change;
 
-const product=products.find(p=>p.id===id);
 
-if(!product)return;
+  if(selectedQuantity < 1){
 
-const existing=cart.find(item=>item.id===id);
+    selectedQuantity = 1;
 
-if(existing){
+  }
 
-existing.quantity++;
 
-}else{
-
-cart.push({
-id:id,
-quantity:1
-});
-
-}
-
-updateCart();
+  document.getElementById(
+    "selectedQuantity"
+  ).textContent = selectedQuantity;
 
 }
 
 
-/* PANIER */
+function closeQuantityModal(){
+
+  document.getElementById(
+    "quantityOverlay"
+  ).classList.remove("show");
+
+}
+
+
+function confirmAddToCart(){
+
+  const product =
+    products.find(
+      p => p.id === selectedProductId
+    );
+
+
+  if(!product) return;
+
+
+  const existing =
+    cart.find(
+      item => item.id === selectedProductId
+    );
+
+
+  if(existing){
+
+    existing.quantity += selectedQuantity;
+
+  }else{
+
+    cart.push({
+
+      id:selectedProductId,
+
+      quantity:selectedQuantity
+
+    });
+
+  }
+
+
+  updateCart();
+
+  closeQuantityModal();
+
+}
+
+
+/* ==================================================
+   CART
+================================================== */
 
 function updateCart(){
 
-const container=document.getElementById("cartItems");
+  const container =
+    document.getElementById("cartItems");
 
-let total=0;
-let count=0;
 
-if(cart.length===0){
+  let total = 0;
 
-container.innerHTML=`
-<div class="empty">
-🛒<br><br>
-Votre panier est vide.
-</div>
-`;
+  let count = 0;
 
-document.getElementById("cartBottom").style.display="none";
 
-}else{
+  if(cart.length === 0){
 
-document.getElementById("cartBottom").style.display="block";
+    container.innerHTML = `
 
-container.innerHTML=cart.map(item=>{
+      <div class="empty">
 
-const p=products.find(x=>x.id===item.id);
+        🛒
 
-const subtotal=p.price*item.quantity;
+        <br><br>
 
-total+=subtotal;
-count+=item.quantity;
+        Votre panier est vide.
 
-return`
+      </div>
 
-<div class="cart-item">
+    `;
 
-<img
-src="${p.img}"
-alt="${p.name}">
 
-<div class="cart-info">
+    document.getElementById(
+      "cartBottom"
+    ).style.display = "none";
 
-<h3>${p.name}</h3>
 
-<div class="cart-price">
-${p.price} DH × ${item.quantity}
-</div>
+  }else{
 
-<div class="cart-qty">
+    document.getElementById(
+      "cartBottom"
+    ).style.display = "block";
 
-<button onclick="changeQuantity(${p.id},-1)">
-−
-</button>
 
-<span>
-${item.quantity}
-</span>
+    container.innerHTML = cart.map(item => {
 
-<button onclick="changeQuantity(${p.id},1)">
-+
-</button>
 
-<button
-class="remove"
-onclick="removeItem(${p.id})">
-×
-</button>
+      const p =
+        products.find(
+          x => x.id === item.id
+        );
 
-</div>
 
-</div>
+      const subtotal =
+        p.price * item.quantity;
 
-<strong>
-${subtotal} DH
-</strong>
 
-</div>
+      total += subtotal;
 
-`;
+      count += item.quantity;
 
-}).join("");
+
+      return `
+
+        <div class="cart-item">
+
+
+          <img
+          src="${p.img}"
+          alt="${p.name}">
+
+
+          <div class="cart-info">
+
+
+            <h3>
+              ${p.name}
+            </h3>
+
+
+            <div class="cart-price">
+
+              ${p.price} DH ×
+              ${item.quantity}
+
+            </div>
+
+
+            <div class="cart-qty">
+
+
+              <button
+              onclick="changeQuantity(${p.id},-1)">
+
+              −
+
+              </button>
+
+
+              <span>
+                ${item.quantity}
+              </span>
+
+
+              <button
+              onclick="changeQuantity(${p.id},1)">
+
+              +
+
+              </button>
+
+
+              <button
+              class="remove"
+              onclick="removeItem(${p.id})">
+
+              ×
+
+              </button>
+
+
+            </div>
+
+          </div>
+
+
+          <strong>
+            ${subtotal} DH
+          </strong>
+
+
+        </div>
+
+      `;
+
+    }).join("");
+
+  }
+
+
+  document.getElementById(
+    "cartTotal"
+  ).textContent = total + " DH";
+
+
+  document.getElementById(
+    "cartCount"
+  ).textContent = count;
 
 }
 
-document.getElementById("cartTotal").textContent=total+" DH";
 
-document.getElementById("cartCount").textContent=count;
+/* ==================================================
+   CHANGE CART QUANTITY
+================================================== */
+
+function changeQuantity(id, change){
+
+  const item =
+    cart.find(
+      x => x.id === id
+    );
+
+
+  if(!item) return;
+
+
+  item.quantity += change;
+
+
+  if(item.quantity <= 0){
+
+    cart =
+      cart.filter(
+        x => x.id !== id
+      );
+
+  }
+
+
+  updateCart();
 
 }
 
 
-function changeQuantity(id,change){
-
-const item=cart.find(x=>x.id===id);
-
-if(!item)return;
-
-item.quantity+=change;
-
-if(item.quantity<=0){
-
-cart=cart.filter(x=>x.id!==id);
-
-}
-
-updateCart();
-
-}
-
+/* ==================================================
+   REMOVE ITEM
+================================================== */
 
 function removeItem(id){
 
-cart=cart.filter(x=>x.id!==id);
+  cart =
+    cart.filter(
+      x => x.id !== id
+    );
 
-updateCart();
+
+  updateCart();
 
 }
 
 
-/* OUVRIR PANIER */
+/* ==================================================
+   OPEN CART
+================================================== */
 
 function openCart(){
 
-document.getElementById("cartOverlay").classList.add("show");
+  document.getElementById(
+    "cartOverlay"
+  ).classList.add("show");
 
-updateCart();
+
+  updateCart();
 
 }
 
 
 function closeCart(){
 
-document.getElementById("cartOverlay").classList.remove("show");
+  document.getElementById(
+    "cartOverlay"
+  ).classList.remove("show");
 
 }
 
 
 function closeCartOutside(event){
 
-if(event.target.id==="cartOverlay"){
+  if(
+    event.target.id === "cartOverlay"
+  ){
 
-closeCart();
+    closeCart();
+
+  }
 
 }
 
-}
 
-
-/* CHECKOUT */
+/* ==================================================
+   CHECKOUT
+================================================== */
 
 function openCheckout(){
 
-if(cart.length===0){
+  if(cart.length === 0){
 
-alert("Votre panier est vide.");
+    alert(
+      "Votre panier est vide."
+    );
 
-return;
+    return;
 
-}
+  }
 
-buildSummary();
 
-closeCart();
+  buildSummary();
 
-document.getElementById("checkoutOverlay").classList.add("show");
+
+  closeCart();
+
+
+  document.getElementById(
+    "checkoutOverlay"
+  ).classList.add("show");
 
 }
 
 
 function closeCheckout(){
 
-document.getElementById("checkoutOverlay").classList.remove("show");
+  document.getElementById(
+    "checkoutOverlay"
+  ).classList.remove("show");
 
 }
 
+
+/* ==================================================
+   ORDER SUMMARY
+================================================== */
 
 function buildSummary(){
 
-const box=document.getElementById("summaryItems");
+  const box =
+    document.getElementById(
+      "summaryItems"
+    );
 
-let total=0;
 
-box.innerHTML=cart.map(item=>{
+  let total = 0;
 
-const p=products.find(x=>x.id===item.id);
 
-const subtotal=p.price*item.quantity;
+  box.innerHTML =
+    cart.map(item => {
 
-total+=subtotal;
 
-return`
+      const p =
+        products.find(
+          x => x.id === item.id
+        );
 
-<div class="summary-line">
 
-<span>
-${p.name} × ${item.quantity}
-</span>
+      const subtotal =
+        p.price * item.quantity;
 
-<strong>
-${subtotal} DH
-</strong>
 
-</div>
+      total += subtotal;
 
-`;
 
-}).join("");
+      return `
 
-document.getElementById("summaryTotal").textContent=total+" DH";
+        <div class="summary-line">
+
+          <span>
+
+            ${p.name}
+            × ${item.quantity}
+
+          </span>
+
+
+          <strong>
+
+            ${subtotal} DH
+
+          </strong>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+
+  document.getElementById(
+    "summaryTotal"
+  ).textContent =
+    total + " DH";
 
 }
 
 
-/* =========================
-   FORM + WHATSAPP
-========================= */
+/* ==================================================
+   SEND ORDER TO WHATSAPP
+================================================== */
 
 function submitOrder(event){
 
-event.preventDefault();
-
-const name=document.getElementById("name").value.trim();
-
-const phone=document.getElementById("phone").value.trim();
-
-const address=document.getElementById("address").value.trim();
-
-const city=document.getElementById("city").value.trim();
-
-const error=document.getElementById("formError");
+  event.preventDefault();
 
 
-if(!name || !phone || !address || !city){
+  const name =
+    document.getElementById(
+      "name"
+    ).value.trim();
 
-error.style.display="block";
 
-return;
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "address"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "city"
+    ).value.trim();
+
+
+  const error =
+    document.getElementById(
+      "formError"
+    );
+
+
+  if(
+    !name ||
+    !phone ||
+    !address ||
+    !city
+  ){
+
+    error.style.display =
+      "block";
+
+    return;
+
+  }
+
+
+  error.style.display =
+    "none";
+
+
+  let total = 0;
+
+  let productsMessage = "";
+
+
+  cart.forEach(item => {
+
+
+    const p =
+      products.find(
+        x => x.id === item.id
+      );
+
+
+    const subtotal =
+      p.price * item.quantity;
+
+
+    total += subtotal;
+
+
+    productsMessage +=
+
+      "• " +
+      p.name +
+      " | Quantité: " +
+      item.quantity +
+      " | Prix: " +
+      subtotal +
+      " DH\n";
+
+  });
+
+
+  const message =
+
+    "Bonjour O2WEAR 👋\n\n" +
+
+    "🛍️ NOUVELLE COMMANDE\n\n" +
+
+    "👤 Nom complet: " +
+    name +
+    "\n" +
+
+    "📞 Téléphone: " +
+    phone +
+    "\n" +
+
+    "📍 Adresse: " +
+    address +
+    "\n" +
+
+    "🏙️ Ville: " +
+    city +
+    "\n\n" +
+
+    "📦 COMMANDE:\n" +
+
+    productsMessage +
+
+    "\n💰 TOTAL: " +
+    total +
+    " DH\n\n" +
+
+    "Merci pour votre commande.";
+
+
+  const whatsappURL =
+
+    "https://wa.me/212603701100?text=" +
+
+    encodeURIComponent(message);
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
 
 }
 
-error.style.display="none";
+
+/* ==================================================
+   GENDER FILTER
+================================================== */
+
+function filterGender(
+  value,
+  button
+){
+
+  genderFilter = value;
 
 
-let total=0;
-
-let productsMessage="";
-
-
-cart.forEach(item=>{
-
-const p=products.find(x=>x.id===item.id);
-
-const subtotal=p.price*item.quantity;
-
-total+=subtotal;
-
-productsMessage+=
-"• "+p.name+
-" | Quantité: "+item.quantity+
-" | Prix: "+subtotal+" DH\n";
-
-});
+  const buttons =
+    button.parentElement
+    .querySelectorAll(".filter");
 
 
-const message=
-"Bonjour O2WEAR 👋\n\n"+
-"🛍️ NOUVELLE COMMANDE\n\n"+
-"👤 Nom complet: "+name+"\n"+
-"📞 Téléphone: "+phone+"\n"+
-"📍 Adresse: "+address+"\n"+
-"🏙️ Ville: "+city+"\n\n"+
-"📦 COMMANDE:\n"+
-productsMessage+
-"\n💰 TOTAL: "+total+" DH\n\n"+
-"Merci pour votre commande.";
+  buttons.forEach(
+    b => b.classList.remove("active")
+  );
 
 
-const whatsappURL=
-"https://wa.me/212603701100?text="+
-encodeURIComponent(message);
+  button.classList.add("active");
 
 
-/* فتح WhatsApp فقط من بعد تعمير الفورم */
-
-window.open(whatsappURL,"_blank");
+  displayProducts();
 
 }
 
 
-/* FILTER GENDER */
+/* ==================================================
+   CATEGORY FILTER
+================================================== */
 
-function filterGender(value,button){
+function filterCategory(
+  value,
+  button
+){
 
-genderFilter=value;
-
-const buttons=button.parentElement.querySelectorAll(".filter");
-
-buttons.forEach(b=>b.classList.remove("active"));
-
-button.classList.add("active");
-
-displayProducts();
-
-}
+  categoryFilter = value;
 
 
-/* FILTER CATEGORY */
+  const buttons =
+    button.parentElement
+    .querySelectorAll(".filter");
 
-function filterCategory(value,button){
 
-categoryFilter=value;
+  buttons.forEach(
+    b => b.classList.remove("active")
+  );
 
-const buttons=button.parentElement.querySelectorAll(".filter");
 
-buttons.forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
 
-button.classList.add("active");
 
-displayProducts();
+  displayProducts();
 
 }
 
 
-/* SEARCH */
+/* ==================================================
+   SEARCH
+================================================== */
 
 function toggleSearch(){
 
-const box=document.getElementById("searchBox");
+  const box =
+    document.getElementById(
+      "searchBox"
+    );
 
-box.style.display=
-box.style.display==="block"
-?"none"
-:"block";
 
-if(box.style.display==="block"){
+  box.style.display =
 
-document.getElementById("searchInput").focus();
+    box.style.display === "block"
+
+    ? "none"
+
+    : "block";
+
+
+  if(
+    box.style.display === "block"
+  ){
+
+    document.getElementById(
+      "searchInput"
+    ).focus();
+
+  }
 
 }
 
-}
 
-
-/* PRODUCT DETAILS */
+/* ==================================================
+   PRODUCT DETAILS
+================================================== */
 
 function openProductModal(id){
 
-const p=products.find(x=>x.id===id);
+  const p =
+    products.find(
+      x => x.id === id
+    );
 
-if(!p)return;
 
-document.getElementById("modalImg").src=p.img;
+  if(!p) return;
 
-document.getElementById("modalImg").alt=p.name;
 
-document.getElementById("modalName").textContent=p.name;
+  document.getElementById(
+    "modalImg"
+  ).src = p.img;
 
-document.getElementById("modalPrice").textContent=p.price+" DH";
 
-document.getElementById("modalDesc").textContent=p.desc;
+  document.getElementById(
+    "modalImg"
+  ).alt = p.name;
 
-document.getElementById("productOverlay").classList.add("show");
+
+  document.getElementById(
+    "modalName"
+  ).textContent = p.name;
+
+
+  document.getElementById(
+    "modalPrice"
+  ).textContent =
+    p.price + " DH";
+
+
+  document.getElementById(
+    "modalDesc"
+  ).textContent = p.desc;
+
+
+  document.getElementById(
+    "productOverlay"
+  ).classList.add("show");
 
 }
 
 
 function closeProductModal(){
 
-document.getElementById("productOverlay").classList.remove("show");
+  document.getElementById(
+    "productOverlay"
+  ).classList.remove("show");
 
 }
 
 
 function closeProductOutside(event){
 
-if(event.target.id==="productOverlay"){
+  if(
+    event.target.id ===
+    "productOverlay"
+  ){
 
-closeProductModal();
+    closeProductModal();
+
+  }
 
 }
 
-}
 
-
-/* START */
+/* ==================================================
+   START
+================================================== */
 
 displayProducts();
+
 updateCart();
 
 </script>
 
 </body>
-</html>a
+</html>
