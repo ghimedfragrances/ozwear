@@ -13,7 +13,6 @@
       --text:#111;
       --muted:#777;
       --line:#e8e8e8;
-      --accent:#111;
       --green:#25D366;
     }
 
@@ -269,6 +268,19 @@
       z-index:2;
     }
 
+    .gender-badge{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:#111;
+      color:#fff;
+      border-radius:20px;
+      padding:6px 10px;
+      font-size:10px;
+      font-weight:700;
+      z-index:2;
+    }
+
     .product-info{
       padding:15px;
     }
@@ -287,14 +299,6 @@
     .price{
       font-weight:800;
       font-size:16px;
-    }
-
-    .old{
-      text-decoration:line-through;
-      color:#999;
-      font-weight:400;
-      margin-left:5px;
-      font-size:13px;
     }
 
     .product-actions{
@@ -646,6 +650,7 @@
 
 </header>
 
+
 <main>
 
   <!-- HERO -->
@@ -701,35 +706,62 @@
     </div>
 
 
+    <!-- FILTRES GENRE -->
+
     <div class="filters">
 
       <button
         class="filter active"
-        onclick="filterProducts('all',this)">
+        onclick="filterGender('all',this)">
         Tout
       </button>
 
       <button
         class="filter"
-        onclick="filterProducts('T-shirts',this)">
+        onclick="filterGender('hommes',this)">
+        Pour Hommes
+      </button>
+
+      <button
+        class="filter"
+        onclick="filterGender('femmes',this)">
+        Pour Femmes
+      </button>
+
+    </div>
+
+
+    <!-- FILTRES CATEGORIES -->
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        onclick="filterCategory('all',this)">
+        Toutes les catégories
+      </button>
+
+      <button
+        class="filter"
+        onclick="filterCategory('T-shirts',this)">
         T-shirts
       </button>
 
       <button
         class="filter"
-        onclick="filterProducts('Hoodies',this)">
+        onclick="filterCategory('Hoodies',this)">
         Hoodies
       </button>
 
       <button
         class="filter"
-        onclick="filterProducts('Pantalons',this)">
+        onclick="filterCategory('Pantalons',this)">
         Pantalons
       </button>
 
       <button
         class="filter"
-        onclick="filterProducts('Vestes',this)">
+        onclick="filterCategory('Vestes',this)">
         Vestes
       </button>
 
@@ -902,7 +934,7 @@
 </a>
 
 
-<!-- PRODUCT MODAL -->
+<!-- MODAL -->
 
 <div
   class="modal"
@@ -951,6 +983,7 @@ const products = [
     id:1,
     name:"Oversized Black T-Shirt",
     category:"T-shirts",
+    gender:"hommes",
     price:149,
     img:"6d813741218046f77069c4202580ca61.jpg",
     desc:"T-shirt oversized noir, coupe moderne et facile à porter."
@@ -960,6 +993,7 @@ const products = [
     id:2,
     name:"Essential White T-Shirt",
     category:"T-shirts",
+    gender:"hommes",
     price:129,
     img:"https://images.unsplash.com/photo-1583743814966-8936f37f4c75?auto=format&fit=crop&w=800&q=85",
     desc:"Un essentiel blanc minimaliste pour tous les jours."
@@ -969,6 +1003,7 @@ const products = [
     id:3,
     name:"O2 Essential Hoodie",
     category:"Hoodies",
+    gender:"hommes",
     price:299,
     img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85",
     desc:"Hoodie confortable au style clean, parfait pour un look casual."
@@ -978,6 +1013,7 @@ const products = [
     id:4,
     name:"Grey Oversized Hoodie",
     category:"Hoodies",
+    gender:"hommes",
     price:319,
     img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85",
     desc:"Hoodie gris oversized avec une silhouette moderne."
@@ -987,6 +1023,7 @@ const products = [
     id:5,
     name:"Relaxed Cargo Pants",
     category:"Pantalons",
+    gender:"hommes",
     price:279,
     img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85",
     desc:"Pantalon cargo confortable avec une coupe décontractée."
@@ -996,6 +1033,7 @@ const products = [
     id:6,
     name:"Classic Black Pants",
     category:"Pantalons",
+    gender:"hommes",
     price:249,
     img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85",
     desc:"Pantalon noir polyvalent pour un style propre et élégant."
@@ -1005,6 +1043,7 @@ const products = [
     id:7,
     name:"Minimal Bomber Jacket",
     category:"Vestes",
+    gender:"hommes",
     price:449,
     img:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85",
     desc:"Bomber minimaliste inspiré du streetwear."
@@ -1014,6 +1053,7 @@ const products = [
     id:8,
     name:"Denim Jacket",
     category:"Vestes",
+    gender:"hommes",
     price:399,
     img:"https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=800&q=85",
     desc:"Veste denim intemporelle à porter avec toutes tes pièces."
@@ -1023,6 +1063,7 @@ const products = [
     id:9,
     name:"Black Overshirt",
     category:"Vestes",
+    gender:"hommes",
     price:80,
     img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=85",
     desc:"Black overshirt élégante et polyvalente, parfaite pour compléter un look moderne."
@@ -1031,17 +1072,38 @@ const products = [
 ];
 
 
+let currentGender = "all";
 let currentCategory = "all";
 
 
-function displayProducts(list=products){
+function displayProducts(){
 
   const grid=document.getElementById("productGrid");
 
+  let list=products;
+
+
+  if(currentGender!=="all"){
+    list=list.filter(
+      p=>p.gender===currentGender
+    );
+  }
+
+
+  if(currentCategory!=="all"){
+    list=list.filter(
+      p=>p.category===currentCategory
+    );
+  }
+
+
   if(!list.length){
 
-    grid.innerHTML=
-      '<p style="grid-column:1/-1;color:#777;padding:30px 0">Aucun produit trouvé.</p>';
+    grid.innerHTML=`
+      <p style="grid-column:1/-1;color:#777;padding:30px 0">
+        Aucun produit trouvé.
+      </p>
+    `;
 
     return;
   }
@@ -1057,6 +1119,10 @@ function displayProducts(list=products){
           ? '<span class="badge">NOUVEAU</span>'
           : ''
         }
+
+        <span class="gender-badge">
+          ${p.gender==="hommes" ? "HOMMES" : "FEMMES"}
+        </span>
 
         <img
           src="${p.img}"
@@ -1106,23 +1172,35 @@ function displayProducts(list=products){
 }
 
 
-function filterProducts(category,btn){
+function filterGender(gender,btn){
 
-  currentCategory=category;
+  currentGender=gender;
 
   document
-    .querySelectorAll(".filter")
+    .querySelectorAll(".filters:first-of-type .filter")
     .forEach(x=>x.classList.remove("active"));
 
   btn.classList.add("active");
 
+  displayProducts();
 
-  const list =
-    category==="all"
-    ? products
-    : products.filter(p=>p.category===category);
+}
 
-  displayProducts(list);
+
+function filterCategory(category,btn){
+
+  currentCategory=category;
+
+  const categoryButtons =
+    document.querySelectorAll(".filters:nth-of-type(2) .filter");
+
+  categoryButtons.forEach(
+    x=>x.classList.remove("active")
+  );
+
+  btn.classList.add("active");
+
+  displayProducts();
 
 }
 
@@ -1199,7 +1277,9 @@ function toggleSearch(){
     : "block";
 
   if(box.style.display==="block"){
-    document.getElementById("searchInput").focus();
+    document
+      .getElementById("searchInput")
+      .focus();
   }
 
 }
@@ -1216,9 +1296,23 @@ function searchProducts(){
 
 
   let list=products.filter(p=>
+
     p.name.toLowerCase().includes(q) ||
-    p.category.toLowerCase().includes(q)
+
+    p.category.toLowerCase().includes(q) ||
+
+    p.gender.toLowerCase().includes(q)
+
   );
+
+
+  if(currentGender!=="all"){
+
+    list=list.filter(
+      p=>p.gender===currentGender
+    );
+
+  }
 
 
   if(currentCategory!=="all"){
@@ -1230,7 +1324,77 @@ function searchProducts(){
   }
 
 
-  displayProducts(list);
+  const grid=document.getElementById("productGrid");
+
+
+  if(!list.length){
+
+    grid.innerHTML=`
+      <p style="grid-column:1/-1;color:#777;padding:30px 0">
+        Aucun produit trouvé.
+      </p>
+    `;
+
+    return;
+  }
+
+
+  grid.innerHTML=list.map(p=>`
+
+    <article class="product">
+
+      <div class="product-img">
+
+        ${p.id<=3
+          ? '<span class="badge">NOUVEAU</span>'
+          : ''
+        }
+
+        <span class="gender-badge">
+          ${p.gender==="hommes" ? "HOMMES" : "FEMMES"}
+        </span>
+
+        <img
+          src="${p.img}"
+          alt="${p.name}"
+          loading="lazy">
+
+      </div>
+
+
+      <div class="product-info">
+
+        <h3>${p.name}</h3>
+
+        <div class="category">
+          ${p.category}
+        </div>
+
+        <div class="price">
+          ${p.price} DH
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="buy"
+            onclick="buyProduct(${p.id})">
+            Commander
+          </button>
+
+          <button
+            class="details"
+            onclick="openModal(${p.id})">
+            ↗
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
 
 }
 
